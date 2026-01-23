@@ -8,7 +8,7 @@
 <style>
 body { font-family:'Arial',sans-serif; margin:0; background:#f4f4f4; color:#222; }
 a { text-decoration:none; color:inherit; }
-header { background:#222 url('https://images.unsplash.com/photo-1601758123927-36b8b5eaff2b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg') center/cover no-repeat; color:#fff; text-align:center; padding:50px 20px; position:relative; }
+header { background:#222 url('https://via.placeholder.com/1200x400?text=Elite+Doberman+World') center/cover no-repeat; color:#fff; text-align:center; padding:50px 20px; position:relative; }
 header::after { content:""; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); }
 header h1 { position:relative; font-size:3rem; margin:0; }
 header p { position:relative; font-size:1.3rem; margin-top:10px; }
@@ -47,121 +47,36 @@ footer { background:#222; color:#ccc; text-align:center; padding:20px; font-size
 <h2>Our Dobermans</h2>
 <div class="gallery">
 
-<!-- 40 Doberman Cards -->
+<!-- 40 Doberman Cards with lightweight placeholders -->
 
-<!-- 1 -->
-<div class="card">
-<img src="https://images.unsplash.com/photo-1601758123927-36b8b5eaff2b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400" alt="Doberman Puppy">
-<div class="card-content">
-<span class="label">Available</span>
-<h3>Max</h3>
-<p>Gender: Male | Color: Black & Rust | Age: 8 Weeks</p>
-<p class="price">$1500</p>
-</div>
-</div>
+<script>
+const names = ["Max","Luna","Rex","Bella","Thor","Shadow","Nova","Zeus","Stella","King","Ace","Mia","Apollo","Cleo","Diesel","Duke","Ruby","Titan","Nala","Bruno","Sasha","Leo","Athena","Rocky","Chloe","Hunter","Lola","Ranger","Daisy","Blaze","Jax","Sadie","Gunner","Zara","Samson","Maya","Rocco","Olivia","Storm","Ruby"];
+const genders = ["Male","Female"];
+const colors = ["Black & Rust","Red & Rust"];
+const ages = ["8 Weeks","9 Weeks","10 Weeks","12 Weeks","6 Months","8 Months","1 Year","1.5 Years","2 Years","2.5 Years","3 Years","3.5 Years","4 Years"];
+const prices = [750,900,1200,1500,1600,1750,1800,2000,2200,2500,2800,3000];
 
-<!-- 2 -->
-<div class="card">
-<img src="https://images.unsplash.com/photo-1572975694862-2f9d8b9a0f43?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400" alt="Doberman Puppy">
-<div class="card-content">
-<span class="label">Sold</span>
-<h3>Luna</h3>
-<p>Gender: Female | Color: Red & Rust | Age: 10 Weeks</p>
-<p class="price">$2000</p>
-</div>
-</div>
-
-<!-- 3 -->
-<div class="card">
-<img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400" alt="Doberman Adult">
-<div class="card-content">
-<span class="label">Available</span>
-<h3>Rex</h3>
-<p>Gender: Male | Color: Black & Rust | Age: 2 Years</p>
-<p class="price">$2500</p>
-</div>
-</div>
-
-<!-- 4 -->
-<div class="card">
-<img src="https://images.unsplash.com/photo-1601758123927-36b8b5eaff2b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400" alt="Doberman Adult">
-<div class="card-content">
-<span class="label">Available</span>
-<h3>Bella</h3>
-<p>Gender: Female | Color: Black & Rust | Age: 1 Year</p>
-<p class="price">$1800</p>
-</div>
-</div>
-
-<!-- 5 -->
-<div class="card">
-<img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400" alt="Doberman Adult">
-<div class="card-content">
-<span class="label">Sold</span>
-<h3>Thor</h3>
-<p>Gender: Male | Color: Red & Rust | Age: 3 Years</p>
-<p class="price">$3000</p>
-</div>
-</div>
-
-<!-- 6 -->
-<div class="card">
-<img src="https://images.unsplash.com/photo-1572975694862-2f9d8b9a0f43?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400" alt="Doberman Puppy">
-<div class="card-content">
-<span class="label">Available</span>
-<h3>Shadow</h3>
-<p>Gender: Male | Color: Black & Rust | Age: 10 Weeks</p>
-<p class="price">$1200</p>
-</div>
-</div>
-
-<!-- 7 -->
-<div class="card">
-<img src="https://images.unsplash.com/photo-1601758123927-36b8b5eaff2b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400" alt="Doberman Puppy">
-<div class="card-content">
-<span class="label">Available</span>
-<h3>Nova</h3>
-<p>Gender: Female | Color: Red & Rust | Age: 9 Weeks</p>
-<p class="price">$1600</p>
-</div>
-</div>
-
-<!-- 8 -->
-<div class="card">
-<img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400" alt="Doberman Adult">
-<div class="card-content">
-<span class="label">Available</span>
-<h3>Zeus</h3>
-<p>Gender: Male | Color: Black & Rust | Age: 2.5 Years</p>
-<p class="price">$2800</p>
-</div>
-</div>
-
-<!-- 9 -->
-<div class="card">
-<img src="https://images.unsplash.com/photo-1572975694862-2f9d8b9a0f43?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400" alt="Doberman Adult">
-<div class="card-content">
-<span class="label">Sold</span>
-<h3>Stella</h3>
-<p>Gender: Female | Color: Black & Rust | Age: 1.5 Years</p>
-<p class="price">$1900</p>
-</div>
-</div>
-
-<!-- 10 -->
-<div class="card">
-<img src="https://images.unsplash.com/photo-1601758123927-36b8b5eaff2b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=400" alt="Doberman Adult">
-<div class="card-content">
-<span class="label">Available</span>
-<h3>King</h3>
-<p>Gender: Male | Color: Red & Rust | Age: 4 Years</p>
-<p class="price">$3000</p>
-</div>
-</div>
-
-<!-- 11 - 40 -->
-<!-- Repeat similar structure with unique names, age, gender, color, price, availability -->
-<!-- For brevity, I can generate all 40 automatically in the next step if needed -->
+for(let i=0;i<40;i++){
+  const name = names[i];
+  const gender = genders[Math.floor(Math.random()*2)];
+  const color = colors[Math.floor(Math.random()*2)];
+  const age = ages[Math.floor(Math.random()*ages.length)];
+  const price = prices[Math.floor(Math.random()*prices.length)];
+  const available = Math.random()<0.7 ? "Available":"Sold";
+  
+  document.write(`
+    <div class="card">
+      <img src="https://via.placeholder.com/400x200?text=${name}" alt="Doberman ${name}">
+      <div class="card-content">
+        <span class="label">${available}</span>
+        <h3>${name}</h3>
+        <p>Gender: ${gender} | Color: ${color} | Age: ${age}</p>
+        <p class="price">$${price}</p>
+      </div>
+    </div>
+  `);
+}
+</script>
 
 </div>
 </section>
