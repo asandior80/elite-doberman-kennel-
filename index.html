@@ -27,6 +27,26 @@ h2 { border-bottom:3px solid #ff9933; display:inline-block; padding-bottom:5px; 
 .label { display:inline-block; background:#ff4d4d; color:#fff; padding:3px 8px; border-radius:5px; font-size:0.85rem; margin-bottom:5px; }
 .price { font-weight:bold; color:#333; font-size:1rem; }
 footer { background:#222; color:#ccc; text-align:center; padding:20px; font-size:0.9rem; }
+
+/* WhatsApp Floating Button */
+.whatsapp-btn {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:#fff;
+  border-radius:50px;
+  padding:15px 20px;
+  font-size:16px;
+  font-weight:bold;
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+  z-index:1000;
+  display:flex;
+  align-items:center;
+  transition:0.3s;
+}
+.whatsapp-btn:hover { background:#1ebe57; }
+.whatsapp-btn img { width:24px; height:24px; margin-right:10px; }
 </style>
 </head>
 <body>
@@ -35,6 +55,70 @@ footer { background:#222; color:#ccc; text-align:center; padding:20px; font-size
 <h1>Elite Doberman World</h1>
 <p>Premium Doberman Breeder Since 2018</p>
 </header>
+
+<nav>
+<a href="#puppies">Puppies & Dogs</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<div class="container">
+
+<section id="puppies">
+<h2>Our Dobermans</h2>
+<div class="gallery">
+
+<script>
+const names = ["Max","Luna","Rex","Bella","Thor","Shadow","Nova","Zeus","Stella","King","Ace","Mia","Apollo","Cleo","Diesel"];
+const genders = ["Male","Female"];
+const colors = ["Black & Rust","Red & Rust"];
+const ages = ["8 Weeks","9 Weeks","10 Weeks","12 Weeks","6 Months","8 Months","1 Year","1.5 Years","2 Years","2.5 Years","3 Years","3.5 Years","4 Years"];
+const prices = [750,900,1200,1500,1600,1750,1800,2000,2200,2500,2800,3000];
+
+for(let i=0;i<15;i++){
+  const name = names[i];
+  const gender = genders[Math.floor(Math.random()*2)];
+  const color = colors[Math.floor(Math.random()*2)];
+  const age = ages[Math.floor(Math.random()*ages.length)];
+  const price = prices[Math.floor(Math.random()*prices.length)];
+  const available = Math.random()<0.7 ? "Available":"Sold";
+  
+  document.write(`
+    <div class="card">
+      <img src="https://via.placeholder.com/400x200?text=${name}" alt="Doberman ${name}">
+      <div class="card-content">
+        <span class="label">${available}</span>
+        <h3>${name}</h3>
+        <p>Gender: ${gender} | Color: ${color} | Age: ${age}</p>
+        <p class="price">$${price}</p>
+      </div>
+    </div>
+  `);
+}
+</script>
+
+</div>
+</section>
+
+<section id="contact">
+<h2>Contact Us</h2>
+<p>Email: nickpatrick887@gmail.com</p>
+<p>WhatsApp Only: (365) 907-3536</p>
+</section>
+
+</div>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/13659073536" target="_blank" class="whatsapp-btn">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo">
+  Message Now
+</a>
+
+<footer>
+<p>© 2026 Elite Doberman World. All rights reserved.</p>
+</footer>
+
+</body>
+</html></header>
 
 <nav>
 <a href="#puppies">Puppies & Dogs</a>
