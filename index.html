@@ -695,3 +695,115 @@ function updateStatus() {
 </script>
 </body>
 </html>
+<section id="delivery">
+  <h2>Delivery & Tracking</h2>
+
+  <!-- Delivery Request Form -->
+  <form id="deliveryForm">
+    <label>Name:</label><br>
+    <input type="text" id="delName" placeholder="Your Name" required><br><br>
+
+    <label>Email:</label><br>
+    <input type="email" id="delEmail" placeholder="Your Email" required><br><br>
+
+    <label>Doberman / Dog:</label><br>
+    <input type="text" id="delDog" placeholder="Dog Name/ID" required><br><br>
+
+    <label>Delivery Address:</label><br>
+    <textarea id="delAddress" placeholder="Full Address" required></textarea><br><br>
+
+    <button type="button" onclick="createTracking()">Request Delivery</button>
+  </form>
+
+  <p id="trackingCodeDisplay"></p>
+
+  <hr>
+
+  <!-- Track Package -->
+  <h3>Track Your Package</h3>
+  <input type="text" id="trackInput" placeholder="Enter Tracking Code">
+  <button type="button" onclick="trackPackage()">Track</button>
+  <p id="trackResult"></p>
+
+  <hr>
+
+  <!-- Admin Update Delivery Status -->
+  <h3>Update Delivery Status (Admin)</h3>
+  <input type="text" id="updateCode" placeholder="Tracking Code">
+  <input type="text" id="updateStatus" placeholder="New Status">
+  <button type="button" onclick="updateStatus()">Update</button>
+  <p id="updateResult"></p>
+
+  <hr>
+
+  <!-- Vehicle Gallery -->
+  <div class="gallery" style="margin-top:20px;">
+    <script>
+      const vehicles = ["Truck","Van","Plane","Truck","Van","Plane","Truck","Van","Plane","Truck"];
+      vehicles.forEach((v,i)=>{
+        document.write(`
+          <div class="card">
+            <img src="https://via.placeholder.com/400x200?text=${v}+Elite+Doberman+World" alt="${v}">
+            <div class="card-content">
+              <h3>${v}</h3>
+              <p>Delivery vehicle for Elite Doberman World</p>
+            </div>
+          </div>
+        `);
+      });
+    </script>
+  </div>
+</section>
+
+<script>
+// Store deliveries in browser
+let deliveries = [];
+
+// Create Tracking
+function createTracking() {
+  const name = document.getElementById("delName").value.trim();
+  const email = document.getElementById("delEmail").value.trim();
+  const dog = document.getElementById("delDog").value.trim();
+  const address = document.getElementById("delAddress").value.trim();
+  if(!name || !email || !dog || !address){ alert("Please fill all fields."); return; }
+
+  const code = 'EDW-'+Math.random().toString(36).substring(2,10).toUpperCase();
+  const delivery = { code, name, email, dog, address, status: "Processing" };
+  deliveries.push(delivery);
+
+  document.getElementById("trackingCodeDisplay").innerHTML = `Thank you, ${name}! Your delivery request has been received.<br>Tracking Code: <strong>${code}</strong>`;
+  document.getElementById("deliveryForm").reset();
+}
+
+// Track Package
+function trackPackage() {
+  const code = document.getElementById("trackInput").value.trim().toUpperCase();
+  const delivery = deliveries.find(d => d.code === code);
+  if(delivery){
+    document.getElementById("trackResult").innerHTML = `Tracking Code: ${code}<br>Status: ${delivery.status}<br>Dog: ${delivery.dog}<br>Address: ${delivery.address}`;
+  } else {
+    document.getElementById("trackResult").innerHTML = "Tracking code not found.";
+  }
+}
+
+// Admin Update Delivery Status
+function updateStatus() {
+  const code = document.getElementById("updateCode").value.trim().toUpperCase();
+  const status = document.getElementById("updateStatus").value.trim();
+  const delivery = deliveries.find(d => d.code === code);
+  if(delivery){
+    delivery.status = status;
+    document.getElementById("updateResult").innerHTML = `Delivery ${code} status updated to "${status}".`;
+    document.getElementById("updateCode").value = "";
+    document.getElementById("updateStatus").value = "";
+  } else {
+    document.getElementById("updateResult").innerHTML = "Tracking code not found.";
+  }
+}
+</script>
+<!-- Floating Buttons -->
+<div class="floating-btn">
+  <a href="https://wa.me/13659073536" target="_blank" style="font-size:0.75rem; padding:5px 8px;">WhatsApp</a>
+  <a href="mailto:nickpatrick887@gmail.com" class="email-btn" style="font-size:0.75rem; padding:5px 8px;">Email</a>
+  <a href="#" class="chat-btn" onclick="openChat()" style="font-size:0.75rem; padding:5px 8px;">Chat AI</a>
+</div>
