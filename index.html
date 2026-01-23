@@ -4,45 +4,49 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Elite Doberman World | Premium Doberman Breeder</title>
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <style>
-body { margin:0; font-family:Arial,sans-serif; background:#f0f0f5; color:#222; }
-header { background:#222; color:#fff; text-align:center; padding:40px 20px; }
-header h1 { font-size:2.5rem; margin:0; }
-header p { font-size:1rem; margin-top:10px; }
-nav { background:#444; text-align:center; padding:12px; position:sticky; top:0; z-index:100; }
-nav a { color:#fff; margin:0 12px; font-weight:bold; transition:0.3s; text-decoration:none; }
-nav a:hover { color:#ff9933; }
-.container { max-width:1200px; margin:auto; padding:20px; }
-h2 { border-bottom:3px solid #ff9933; display:inline-block; padding-bottom:5px; margin-bottom:20px; }
-.section { margin-bottom:50px; }
-.gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:15px; }
-.card { background:#fff; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.15); overflow:hidden; transition:0.3s; }
-.card:hover { transform:scale(1.02); }
-.card img { width:100%; height:auto; }
-.card-content { padding:10px; }
-.card-content h3 { margin:0 0 5px 0; }
-.card-content p { margin:3px 0; font-size:0.85rem; }
-.label { display:inline-block; background:#ff4d4d; color:#fff; padding:2px 6px; border-radius:4px; font-size:0.75rem; margin-bottom:5px; }
-.price { font-weight:bold; color:#333; font-size:0.9rem; }
+/* General */
+body { font-family:'Arial',sans-serif; margin:0; background:#f0f0f0; color:#222; scroll-behavior:smooth; }
+header { background:linear-gradient(90deg,#ff9933,#ff6600); color:#fff; text-align:center; padding:50px 20px; }
+header h1 { font-size:3rem; margin:0; }
+header p { font-size:1.2rem; margin-top:10px; }
+nav { background:#333; text-align:center; padding:12px; position:sticky; top:0; z-index:100; }
+nav a { color:#fff; margin:0 10px; font-weight:bold; text-decoration:none; transition:0.3s; }
+nav a:hover { color:#ffcc00; }
 
-/* Floating Buttons */
-.floating-btn { position:fixed; bottom:20px; right:20px; display:flex; flex-direction:column; gap:6px; z-index:1000; }
-.floating-btn a { display:flex; align-items:center; justify-content:center; background:#25D366; color:#fff; border-radius:30px; padding:5px 10px; font-weight:bold; text-decoration:none; font-size:0.8rem; box-shadow:0 2px 5px rgba(0,0,0,0.2); }
-.floating-btn a.email-btn { background:#0072c6; }
-
-/* 3-dot menu */
+/* 3-dot Menu */
 .menu-wrapper { position:fixed; top:15px; right:15px; z-index:1001; }
-.menu-btn { font-size:28px; cursor:pointer; background:none; border:none; color:#fff; }
-.menu-content { display:none; position:absolute; top:35px; right:0; background:#333; border-radius:8px; overflow:hidden; min-width:180px; }
-.menu-content a { display:block; padding:10px 12px; color:#fff; text-decoration:none; border-bottom:1px solid #555; font-size:0.85rem; }
+.menu-btn { font-size:28px; cursor:pointer; background:none; border:none; color:#333; }
+.menu-content { display:none; position:absolute; top:35px; right:0; background:#fff; border:1px solid #ccc; border-radius:6px; box-shadow:0 4px 10px rgba(0,0,0,0.2); width:220px; overflow:hidden; }
+.menu-content a { display:block; padding:8px 12px; font-size:14px; color:#222; border-bottom:1px solid #eee; }
 .menu-content a:hover { background:#ff9933; color:#fff; }
 .menu-content a:last-child { border-bottom:none; }
 
+/* Section */
+section { padding:50px 20px; max-width:1200px; margin:auto; border-bottom:5px solid #ccc; border-radius:10px; background:white; margin-bottom:20px; box-shadow:0 4px 15px rgba(0,0,0,0.1); }
+section h2 { font-size:2rem; margin-bottom:15px; color:#ff6600; }
+section p { line-height:1.6; margin-bottom:15px; }
+.gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:15px; }
+
+/* Cards */
+.card { background:#fff; border-radius:10px; overflow:hidden; box-shadow:0 4px 10px rgba(0,0,0,0.15); transition:0.3s; }
+.card:hover { transform:scale(1.02); }
+.card img { width:100%; height:150px; object-fit:cover; }
+.card-content { padding:10px; }
+.card-content h3 { margin:5px 0; }
+.card-content p { margin:5px 0; font-size:0.9rem; }
+
+/* Floating Buttons */
+.floating-btn { position:fixed; bottom:20px; right:20px; display:flex; flex-direction:column; gap:6px; z-index:1000; }
+.floating-btn a { display:flex; align-items:center; justify-content:center; background:#25D366; color:#fff; border-radius:30px; padding:6px 10px; font-weight:bold; text-decoration:none; transition:0.3s; font-size:0.85rem; }
+.floating-btn a.email-btn { background:#0072c6; }
+.floating-btn a:hover { opacity:0.85; }
+
 /* Chat Popup */
-.chat-popup { display:none; position:fixed; bottom:120px; right:20px; border:2px solid #25D366; border-radius:8px; z-index:1002; background:white; width:250px; max-width:90%; }
+.chat-popup { display:none; position:fixed; bottom:120px; right:20px; border:2px solid #25D366; border-radius:8px; z-index:1002; background:white; width:270px; max-width:90%; }
 .chat-header { background:#25D366; color:white; padding:8px; text-align:center; border-radius:6px 6px 0 0; font-weight:bold; font-size:0.9rem; }
-.chat-body { padding:8px; max-height:300px; overflow-y:auto; }
+.chat-body { padding:8px; max-height:350px; overflow-y:auto; }
 .chat-messages { height:150px; overflow-y:auto; border:1px solid #ccc; padding:4px; border-radius:4px; margin-bottom:4px; background:#f9f9f9; font-size:0.8rem; }
 .chat-messages div { margin:3px 0; }
 .user-msg { text-align:right; color:#fff; background:#25D366; display:inline-block; padding:3px 6px; border-radius:10px; font-size:0.8rem; }
@@ -51,17 +55,16 @@ h2 { border-bottom:3px solid #ff9933; display:inline-block; padding-bottom:5px; 
 .chat-body button { background:#25D366; color:white; border:none; padding:6px 8px; border-radius:4px; cursor:pointer; width:100%; font-size:0.8rem; }
 .chat-body button:hover { background:#1ebe57; }
 
-/* Delivery & Tracking */
+/* Delivery Form */
 #delivery input, #delivery textarea, #delivery button { width:100%; padding:6px; margin-bottom:8px; border-radius:4px; border:1px solid #ccc; font-size:0.85rem; }
 #delivery button { background:#25D366; color:white; border:none; cursor:pointer; }
 #delivery button:hover { background:#1ebe57; }
 
 /* Map */
-#map { height:300px; border-radius:8px; margin-top:10px; }
+#map { height:300px; width:100%; border-radius:10px; margin-bottom:15px; }
 
-/* Section colors */
-.section:nth-child(odd) { background:#e6f0ff; padding:30px; border-radius:10px; }
-.section:nth-child(even) { background:#fff0f5; padding:30px; border-radius:10px; }
+/* Footer */
+footer { background:#222; color:#ccc; text-align:center; padding:20px; font-size:0.85rem; margin-top:20px; border-radius:10px; }
 </style>
 </head>
 <body>
@@ -73,100 +76,94 @@ h2 { border-bottom:3px solid #ff9933; display:inline-block; padding-bottom:5px; 
 
 <!-- 3-dot Menu -->
 <div class="menu-wrapper">
-<button class="menu-btn" onclick="toggleMenu()">⋮</button>
-<div class="menu-content" id="menuContent">
+  <button class="menu-btn" onclick="toggleMenu()">⋮</button>
+  <div class="menu-content" id="menuContent">
+    <a href="#section1">Home</a>
+    <a href="#section2">Our Dobermans</a>
+    <a href="#section3">About Us</a>
+    <a href="#section4">Services</a>
+    <a href="#section5">Delivery & Tracking</a>
+    <a href="#section6">Gallery</a>
+    <a href="#section7">Testimonials</a>
+    <a href="#section8">Care Tips</a>
+    <a href="#section9">Training</a>
+    <a href="#section10">FAQs</a>
+    <a href="#section11">Contact</a>
+    <a href="#section12">Location Map</a>
+  </div>
+</div>
+
+<nav>
 <a href="#section1">Home</a>
-<a href="#section2">About Us</a>
-<a href="#section3">Our Puppies</a>
-<a href="#section4">Delivery</a>
-<a href="#section5">Track Package</a>
-<a href="#section6">Gallery</a>
-<a href="#section7">AI Assistant</a>
-<a href="#section8">Testimonials</a>
-<a href="#section9">Services</a>
-<a href="#section10">FAQ</a>
-<a href="#section11">Contact</a>
-<a href="#section12">Blog</a>
-</div>
-</div>
+<a href="#section2">Dobermans</a>
+<a href="#section5">Tracking</a>
+</nav>
 
 <div class="container">
 
-<!-- 12 Scrollable Sections -->
-<section id="section1" class="section">
+<!-- 12 Sections -->
+<section id="section1">
 <h2>Welcome to Elite Doberman World</h2>
-<p>Elite Doberman World has been raising and breeding premium Dobermans for over 8 years. Our passion is ensuring every dog is healthy, strong, and well-socialized. Our breeders focus on pedigree, temperament, and overall excellence. We provide full care, training tips, and ongoing support for every client.</p>
-<p>We understand that choosing a Doberman is a lifelong commitment, which is why we prioritize quality over quantity. Every puppy undergoes health checks, vaccinations, and comes with documentation. Our clients are not just buyers but part of our Doberman family. With our expertise, your puppy will grow into a strong, loyal companion for life.</p>
+<p>At Elite Doberman World, we pride ourselves on breeding some of the most beautiful and healthy Dobermans in the world. Our commitment to excellence has been the foundation of our work since 2018. Each Doberman is carefully nurtured, socialized, and trained to ensure a loving companion for your family. We focus on temperament, health, and pedigree, offering a truly elite experience for every dog lover.</p>
+<p>We believe in transparency, education, and the highest standards of animal care. Our goal is to match each dog with the perfect owner and provide ongoing support and guidance for their wellbeing. Browse our gallery, learn about our dogs, and see why Elite Doberman World is the top choice for premium Doberman breeding.</p>
 </section>
 
-<section id="section2" class="section">
-<h2>About Us</h2>
-<p>Our team consists of professional breeders, veterinarians, and dog trainers dedicated to creating the best environment for Dobermans. We focus on genetics, nutrition, and physical training. Our mission is to provide every client with a Doberman that is both beautiful and obedient.</p>
-<p>We also engage in community activities and awareness programs about dog care, ensuring that all our dogs are treated with love and respect. Our breeding philosophy is rooted in ethical practices, transparency, and client education. By choosing Elite Doberman World, you choose trust, quality, and dedication.</p>
-</section>
-
-<section id="section3" class="section">
-<h2>Our Puppies</h2>
+<section id="section2">
+<h2>Our Dobermans</h2>
 <div class="gallery">
-<div class="card"><img src="https://images.unsplash.com/photo-1618005198919-1184080c7d1c?auto=format&fit=crop&w=500&q=80" alt="Doberman 1"><div class="card-content"><h3>Max</h3><p>Male | Black & Rust | 8 Weeks</p><p class="price">$1200</p></div></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1617630709933-45c2df9d9d20?auto=format&fit=crop&w=500&q=80" alt="Doberman 2"><div class="card-content"><h3>Luna</h3><p>Female | Black & Rust | 9 Weeks</p><p class="price">$1250</p></div></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1592194996308-7b22c3d7e9b6?auto=format&fit=crop&w=500&q=80" alt="Doberman 3"><div class="card-content"><h3>Rex</h3><p>Male | Red & Rust | 10 Weeks</p><p class="price">$1300</p></div></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1601758123927-0f4481e5ef4a?auto=format&fit=crop&w=500&q=80" alt="Doberman 4"><div class="card-content"><h3>Bella</h3><p>Female | Black & Rust | 12 Weeks</p><p class="price">$1400</p></div></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1592194996309-3ebd1b0c3b64?auto=format&fit=crop&w=500&q=80" alt="Doberman 5"><div class="card-content"><h3>Thor</h3><p>Male | Red & Rust | 6 Months</p><p class="price">$1500</p></div></div>
+<!-- Placeholder images -->
+<div class="card"><img src="https://images.unsplash.com/photo-1561948955-b2d7c0f10392?auto=format&fit=crop&w=500&q=60" alt=""><div class="card-content"><h3>Max</h3><p>Male | Black & Rust | 8 Weeks</p></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1601758123927-4d59b2e0f5a2?auto=format&fit=crop&w=500&q=60" alt=""><div class="card-content"><h3>Luna</h3><p>Female | Black & Rust | 9 Weeks</p></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=500&q=60" alt=""><div class="card-content"><h3>Rex</h3><p>Male | Red & Rust | 12 Weeks</p></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?auto=format&fit=crop&w=500&q=60" alt=""><div class="card-content"><h3>Bella</h3><p>Female | Black & Rust | 6 Months</p></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1560807707-8cc77767d783?auto=format&fit=crop&w=500&q=60" alt=""><div class="card-content"><h3>Thor</h3><p>Male | Red & Rust | 8 Months</p></div></div>
 </div>
 </section>
 
-<section id="section4" class="section">
-<h2>Delivery</h2>
-<p>We provide fast and safe delivery for all our Dobermans. Clients can request delivery directly by filling out the form below. Each request generates a unique tracking code so you can follow your puppy’s journey from our location to your home.</p>
-<form id="deliveryForm">
-<label>Name:</label><input type="text" id="delName" placeholder="Your Name" required>
-<label>Email:</label><input type="email" id="delEmail" placeholder="Your Email" required>
-<label>Doberman / Dog:</label><input type="text" id="delDog" placeholder="Dog Name/ID" required>
-<label>Delivery Address:</label><textarea id="delAddress" placeholder="Full Address" required></textarea>
-<button type="button" onclick="createTracking()">Request Delivery</button>
-</form>
-<p id="trackingCodeDisplay"></p>
+<section id="section3">
+<h2>About Us</h2>
+<p>Elite Doberman World is more than a breeder; we are a passionate team dedicated to the welfare, health, and happiness of our dogs. Every dog is raised with love, attention, and professional care. Our team has years of experience in genetics, training, and breeding healthy, sociable Dobermans. We strive to provide a lifelong support system for our clients and their dogs, ensuring every owner is well-informed and confident in their care.</p>
 </section>
 
-<section id="section5" class="section">
-<h2>Track Package</h2>
-<p>Enter your tracking code to see the estimated delivery time and current location of your puppy.</p>
+<section id="section4">
+<h2>Our Services</h2>
+<p>We offer a wide range of services for Doberman owners, including health checkups, vaccination tracking, training sessions, and guidance on nutrition. Each dog receives tailored attention, ensuring optimal growth and well-being. Our services extend beyond the initial sale to provide ongoing support for our clients. We also provide advice on breeding, grooming, and temperament management to ensure each dog thrives in their environment.</p>
+</section>
+
+<section id="section5">
+<h2>Delivery & Tracking</h2>
+<form id="deliveryForm">
+<label>Name:</label>
+<input type="text" id="delName" placeholder="Your Name" required>
+<label>Email:</label>
+<input type="email" id="delEmail" placeholder="Your Email" required>
+<label>Doberman / Dog:</label>
+<input type="text" id="delDog" placeholder="Dog Name/ID" required>
+<label>Delivery Address:</label>
+<textarea id="delAddress" placeholder="Full Address" required></textarea>
+<label>Your Current Location (lat,lng):</label>
+<input type="text" id="delLocation" placeholder="e.g. 6.5244,3.3792" required>
+<button type="button" onclick="createTracking()">Request Delivery</button>
+</form>
+
+<p id="trackingCodeDisplay"></p>
+
+<h3>Track Your Package</h3>
 <input type="text" id="trackInput" placeholder="Enter Tracking Code">
 <button type="button" onclick="trackPackage()">Track</button>
 <p id="trackResult"></p>
+
 <div id="map"></div>
 </section>
 
-<section id="section6" class="section">
-<h2>Gallery</h2>
-<div class="gallery">
-<div class="card"><img src="https://images.unsplash.com/photo-1601758123927-0f4481e5ef4a?auto=format&fit=crop&w=500&q=80" alt="Delivery Truck"><div class="card-content"><h3>Delivery Truck</h3></div></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1617630709933-45c2df9d9d20?auto=format&fit=crop&w=500&q=80" alt="Delivery Plane"><div class="card-content"><h3>Delivery Plane</h3></div></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1602194996310-3ebd1b0c3b64?auto=format&fit=crop&w=500&q=80" alt="Delivery Van"><div class="card-content"><h3>Delivery Van</h3></div></div>
-</div>
-</section>
-
-<section id="section7" class="section">
-<h2>AI Assistant</h2>
-<p>Ask any questions about our Dobermans, deliveries, or services. Our virtual assistant will respond instantly.</p>
-<div class="chat-popup" id="chatFormSection7">
-<div class="chat-header">Elite Doberman Assistant</div>
-<div class="chat-body">
-<div class="chat-messages" id="chatMessagesSection7"></div>
-<input type="text" id="userInputSection7" placeholder="Type a message...">
-<button onclick="sendChatSection7()">Send</button>
-</div>
-</div>
-<button onclick="openChatSection7()">Open AI Chat</button>
-</section>
-
-<!-- Remaining sections (8-12) can include testimonials, services, FAQ, contact, blog with long content) -->
-<section id="section8" class="section"><h2>Testimonials</h2><p>Our clients love their Dobermans. Stories of joy, companionship, and happy pets are shared here.</p></section>
-<section id="section9" class="section"><h2>Services</h2><p>We offer health checks, training, grooming, and delivery for all our Dobermans.</p></section>
-<section id="section10" class="section"><h2>FAQ</h2><p>Questions about Dobermans, delivery times, training, and more are answered here.</p></section>
-<section id="section11" class="section"><h2>Contact</h2><p>Email: nickpatrick887@gmail.com | WhatsApp: (365) 907-3536</p></section>
-<section id="section12" class="section"><h2>Blog</h2><p>Latest news, tips, and stories about Dobermans and responsible pet ownership.</p></section>
+<!-- Additional sections (6-12) -->
+<section id="section6"><h2>Gallery</h2><p>Explore more photos of our Dobermans and facilities.</p></section>
+<section id="section7"><h2>Testimonials</h2><p>Read stories from happy clients.</p></section>
+<section id="section8"><h2>Care Tips</h2><p>Learn about grooming, feeding, and training tips.</p></section>
+<section id="section9"><h2>Training</h2><p>Our professional training methods ensure a balanced Doberman.</p></section>
+<section id="section10"><h2>FAQs</h2><p>Answers to common questions about our dogs, delivery, and care.</p></section>
+<section id="section11"><h2>Contact Us</h2><p>Email: nickpatrick887@gmail.com</p><p>WhatsApp: (365) 907-3536</p></section>
+<section id="section12"><h2>Location Map</h2><div id="map2"></div><p>You can see our location here.</p></section>
 
 </div>
 
@@ -174,54 +171,100 @@ h2 { border-bottom:3px solid #ff9933; display:inline-block; padding-bottom:5px; 
 <div class="floating-btn">
 <a href="https://wa.me/13659073536" target="_blank">WhatsApp</a>
 <a href="mailto:nickpatrick887@gmail.com" class="email-btn">Email</a>
-<a href="#" class="chat-btn" onclick="openChatSection7()">Chat AI</a>
+<a href="#" class="chat-btn" onclick="openChat()">Chat AI</a>
 </div>
 
-<footer style="text-align:center; background:#222; color:#ccc; padding:15px;">
+<!-- Chat Popup -->
+<div class="chat-popup" id="chatForm">
+<div class="chat-header">Elite Doberman Assistant</div>
+<div class="chat-body">
+<div class="chat-messages" id="chatMessages"></div>
+<input type="text" id="userInput" placeholder="Type a message...">
+<button onclick="sendChat()">Send</button>
+</div>
+</div>
+
+<footer>
 <p>© 2026 Elite Doberman World. All rights reserved.</p>
 </footer>
 
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<!-- Leaflet Map -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-// 3-dot Menu
+// 3-dot menu
 function toggleMenu() {
-const menu = document.getElementById("menuContent");
-menu.style.display = menu.style.display === "block" ? "none" : "block";
+  const menu = document.getElementById("menuContent");
+  menu.style.display = menu.style.display==="block"?"none":"block";
 }
 
-// AI Chat Section 7
-function openChatSection7(){ document.getElementById("chatFormSection7").style.display='block'; }
-function sendChatSection7(){
-let input = document.getElementById("userInputSection7").value.trim();
-if(!input) return;
-let chat = document.getElementById("chatMessagesSection7");
-let userDiv=document.createElement("div"); userDiv.className='user-msg'; userDiv.textContent=input; chat.appendChild(userDiv);
-document.getElementById("userInputSection7").value="";
-setTimeout(()=>{ let reply = "Hello! Thanks for your message. Our team will get back to you."; let botDiv=document.createElement("div"); botDiv.className='bot-msg'; botDiv.textContent=reply; chat.appendChild(botDiv); chat.scrollTop=chat.scrollHeight; },500);
+// AI Chat Simulator
+function openChat() {
+  const chat = document.getElementById("chatForm");
+  chat.style.display = chat.style.display==="block"?"none":"block";
+}
+function sendChat(){
+  const input=document.getElementById("userInput").value.trim();
+  if(!input) return;
+  addMessage(input,'user');
+  document.getElementById("userInput").value="";
+  setTimeout(()=>{
+    const botReply=getBotReply(input.toLowerCase());
+    addMessage(botReply,'bot');
+  },500);
+}
+function addMessage(text,sender){
+  const chatMessages=document.getElementById("chatMessages");
+  const div=document.createElement("div");
+  div.className=sender==='user'?'user-msg':'bot-msg';
+  div.textContent=text;
+  chatMessages.appendChild(div);
+  chatMessages.scrollTop=chatMessages.scrollHeight;
+}
+function getBotReply(msg){
+  if(msg.includes("hello")||msg.includes("hi")) return "Hello! 👋 Welcome to Elite Doberman World.";
+  if(msg.includes("price")||msg.includes("cost")) return "Our Dobermans range from $750 to $3000.";
+  if(msg.includes("puppy")||msg.includes("available")) return "We have both puppies and adult Dobermans.";
+  if(msg.includes("contact")||msg.includes("whatsapp")||msg.includes("email")) return "You can contact us via WhatsApp or Email using the floating buttons.";
+  return "Thank you for your message! Our team will contact you shortly.";
 }
 
-// Delivery & Tracking
+// Tracking system
 let deliveries=[];
 function createTracking(){
-let name=document.getElementById("delName").value.trim();
-let email=document.getElementById("delEmail").value.trim();
-let dog=document.getElementById("delDog").value.trim();
-let address=document.getElementById("delAddress").value.trim();
-if(!name||!email||!dog||!address){alert("Please fill all fields."); return;}
-let code='EDW-'+Math.random().toString(36).substring(2,10).toUpperCase();
-deliveries.push({code,name,email,dog,address,status:"Processing",lat:51.505, lng:-0.09});
-document.getElementById("trackingCodeDisplay").innerHTML=`Thank you, ${name}! Your delivery request has been received.<br>Tracking Code: <strong>${code}</strong>`;
-document.getElementById("deliveryForm").reset();
+  const name=document.getElementById("delName").value.trim();
+  const email=document.getElementById("delEmail").value.trim();
+  const dog=document.getElementById("delDog").value.trim();
+  const address=document.getElementById("delAddress").value.trim();
+  const location=document.getElementById("delLocation").value.trim();
+  if(!name||!email||!dog||!address||!location){alert("Please fill all fields."); return;}
+  const code='EDW-'+Math.random().toString(36).substring(2,10).toUpperCase();
+  const delivery={code,name,email,dog,address,status:"Processing",location};
+  deliveries.push(delivery);
+  document.getElementById("trackingCodeDisplay").innerHTML=`Thank you, ${name}! Your delivery request has been received.<br>Tracking Code: <strong>${code}</strong>`;
+  document.getElementById("deliveryForm").reset();
+}
+function trackPackage(){
+  const code=document.getElementById("trackInput").value.trim().toUpperCase();
+  const delivery=deliveries.find(d=>d.code===code);
+  if(delivery){
+    document.getElementById("trackResult").innerHTML=`Tracking Code: ${code}<br>Status: ${delivery.status}<br>Dog: ${delivery.dog}<br>Address: ${delivery.address}<br>Location: ${delivery.location}`;
+    const coords=delivery.location.split(',');
+    if(coords.length===2) map.setView([parseFloat(coords[0]),parseFloat(coords[1])],10);
+  }else{
+    document.getElementById("trackResult").innerHTML="Tracking code not found.";
+  }
 }
 
-// Map and Track
-let map = L.map('map').setView([51.505, -0.09], 13);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19}).addTo(map);
-let marker = L.marker([51.505,-0.09]).addTo(map).bindPopup("Your package is here").openPopup();
+// Leaflet Maps
+var map = L.map('map').setView([6.5244,3.3792],10);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  maxZoom:19
+}).addTo(map);
 
-function trackPackage(){
-let code = document.getElementById("trackInput").value.trim().toUpperCase();
-let delivery = deliveries.find(d=>d.code===code);
-let trackResult=document.getElementById("trackResult");
-if(delivery){
-trackResult.innerHTML=`Tracking Code: ${
+var map2 = L.map('map2').setView([6.5244,3.3792],10);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  maxZoom:19
+}).addTo(map2);
+</script>
+</body>
+</html>
