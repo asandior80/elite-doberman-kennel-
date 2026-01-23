@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Elite Doberman World | Premium Doberman Breeder</title>
 <style>
-body { font-family:'Arial',sans-serif; margin:0; background:#f4f4f4; color:#222; }
+body { font-family:'Arial',sans-serif; margin:0; background:#f0f4f8; color:#222; }
 header { background:#222; color:#fff; text-align:center; padding:40px 20px; }
 header h1 { font-size:2.5rem; margin:0; }
 header p { font-size:1rem; margin-top:10px; }
 nav { background:#333; text-align:center; padding:12px; position:sticky; top:0; z-index:100; }
-nav a { color:#fff; margin:0 12px; font-weight:bold; transition:0.3s; text-decoration:none; }
+nav a { color:#fff; margin:0 12px; font-weight:bold; text-decoration:none; transition:0.3s; }
 nav a:hover { color:#ff9933; }
 .container { max-width:1200px; margin:auto; padding:20px; }
 h2 { border-bottom:3px solid #ff9933; display:inline-block; padding-bottom:5px; margin-bottom:20px; }
@@ -62,6 +62,7 @@ footer { background:#222; color:#ccc; text-align:center; padding:15px; font-size
 <p>Premium Doberman Breeder Since 2018</p>
 </header>
 
+<!-- 3-dot Menu -->
 <div class="menu-wrapper">
   <button class="menu-btn" onclick="toggleMenu()">⋮</button>
   <div class="menu-content" id="menuContent">
@@ -86,47 +87,148 @@ footer { background:#222; color:#ccc; text-align:center; padding:15px; font-size
 
 <div class="container">
 
-<!-- Puppies -->
+<!-- Puppies Gallery -->
 <section id="puppies">
 <h2>Our Dobermans</h2>
 <div class="gallery">
-<div class="card"><img src="https://via.placeholder.com/200x150?text=Doberman1" style="width:100%; border-radius:8px;"><div class="card-content"><h3>Max</h3><p>Male | Black & Rust | 8 Weeks</p><p class="price">$1200</p></div></div>
-<div class="card"><img src="https://via.placeholder.com/200x150?text=Doberman2" style="width:100%; border-radius:8px;"><div class="card-content"><h3>Luna</h3><p>Female | Red & Rust | 10 Weeks</p><p class="price">$1000</p></div></div>
-<div class="card"><img src="https://via.placeholder.com/200x150?text=Doberman3" style="width:100%; border-radius:8px;"><div class="card-content"><h3>Rex</h3><p>Male | Black & Rust | 12 Weeks</p><p class="price">$1500</p></div></div>
-<div class="card"><img src="https://via.placeholder.com/200x150?text=Doberman4" style="width:100%; border-radius:8px;"><div class="card-content"><h3>Bella</h3><p>Female | Black & Rust | 6 Months</p><p class="price">$1300</p></div></div>
-<div class="card"><img src="https://via.placeholder.com/200x150?text=Doberman5" style="width:100%; border-radius:8px;"><div class="card-content"><h3>Thor</h3><p>Male | Red & Rust | 1 Year</p><p class="price">$1800</p></div></div>
+
+<!-- 5 Doberman Cards with hidden images -->
+<div class="card">
+  <img src="" alt="Doberman Max" style="width:100%; height:auto; border-radius:8px; display:none;">
+  <div class="card-content">
+    <span class="label">Available</span>
+    <h3>Max</h3>
+    <p>Male | Black & Rust | 8 Weeks</p>
+    <p class="price">$1200</p>
+  </div>
+</div>
+
+<div class="card">
+  <img src="" alt="Doberman Luna" style="width:100%; height:auto; border-radius:8px; display:none;">
+  <div class="card-content">
+    <span class="label">Available</span>
+    <h3>Luna</h3>
+    <p>Female | Black & Rust | 10 Weeks</p>
+    <p class="price">$1500</p>
+  </div>
+</div>
+
+<div class="card">
+  <img src="" alt="Doberman Rex" style="width:100%; height:auto; border-radius:8px; display:none;">
+  <div class="card-content">
+    <span class="label">Sold</span>
+    <h3>Rex</h3>
+    <p>Male | Red & Rust | 6 Months</p>
+    <p class="price">$1800</p>
+  </div>
+</div>
+
+<div class="card">
+  <img src="" alt="Doberman Bella" style="width:100%; height:auto; border-radius:8px; display:none;">
+  <div class="card-content">
+    <span class="label">Available</span>
+    <h3>Bella</h3>
+    <p>Female | Black & Rust | 1 Year</p>
+    <p class="price">$2000</p>
+  </div>
+</div>
+
+<div class="card">
+  <img src="" alt="Doberman Thor" style="width:100%; height:auto; border-radius:8px; display:none;">
+  <div class="card-content">
+    <span class="label">Available</span>
+    <h3>Thor</h3>
+    <p>Male | Red & Rust | 2 Years</p>
+    <p class="price">$2500</p>
+  </div>
+</div>
+
 </div>
 </section>
 
-<!-- Contact -->
+<!-- Contact Section -->
 <section id="contact">
 <h2>Contact Us</h2>
 <p>Email: nickpatrick887@gmail.com</p>
 <p>WhatsApp Only: (365) 907-3536</p>
 </section>
 
-<!-- Delivery -->
+<!-- Delivery Section -->
 <section id="delivery">
 <h2>Delivery & Tracking</h2>
 
 <form id="deliveryForm">
-<label>Name:</label><input type="text" id="delName" placeholder="Your Name" required>
-<label>Email:</label><input type="email" id="delEmail" placeholder="Your Email" required>
-<label>Doberman / Dog:</label><input type="text" id="delDog" placeholder="Dog Name/ID" required>
-<label>Delivery Address:</label><input type="text" id="delAddress" placeholder="Full Address" required>
+<label>Name:</label>
+<input type="text" id="delName" placeholder="Your Name" required>
+<label>Email:</label>
+<input type="email" id="delEmail" placeholder="Your Email" required>
+<label>Doberman / Dog:</label>
+<input type="text" id="delDog" placeholder="Dog Name/ID" required>
+<label>Delivery Address:</label>
+<textarea id="delAddress" placeholder="Full Address" required></textarea>
 <button type="button" onclick="createTracking()">Request Delivery</button>
 </form>
 
 <p id="trackingCodeDisplay"></p>
 
-<h3>Track Your Package & Map</h3>
+<h3>Track Your Package</h3>
 <input type="text" id="trackInput" placeholder="Enter Tracking Code">
 <button type="button" onclick="trackPackage()">Track</button>
 <p id="trackResult"></p>
-<p id="distanceTime"></p>
-<div id="map" style="width:100%;height:300px;margin-top:10px;"></div>
 
+<h3>Admin Update Delivery Status</h3>
+<input type="text" id="updateCode" placeholder="Tracking Code">
+<input type="text" id="updateStatus" placeholder="New Status">
+<button type="button" onclick="updateStatus()">Update</button>
+<p id="updateResult"></p>
+
+<h3>Delivery Vehicles</h3>
+<div class="gallery" style="margin-top:20px;">
+
+<!-- 5 Delivery Cards with hidden images -->
+<div class="card">
+  <img src="" alt="Truck 1" style="width:100%; height:auto; border-radius:8px; display:none;">
+  <div class="card-content">
+    <h3>Truck 1</h3>
+    <p>Delivery vehicle for Elite Doberman World</p>
+  </div>
+</div>
+
+<div class="card">
+  <img src="" alt="Van 1" style="width:100%; height:auto; border-radius:8px; display:none;">
+  <div class="card-content">
+    <h3>Van 1</h3>
+    <p>Delivery vehicle for Elite Doberman World</p>
+  </div>
+</div>
+
+<div class="card">
+  <img src="" alt="Plane 1" style="width:100%; height:auto; border-radius:8px; display:none;">
+  <div class="card-content">
+    <h3>Plane 1</h3>
+    <p>Delivery vehicle for Elite Doberman World</p>
+  </div>
+</div>
+
+<div class="card">
+  <img src="" alt="Truck 2" style="width:100%; height:auto; border-radius:8px; display:none;">
+  <div class="card-content">
+    <h3>Truck 2</h3>
+    <p>Delivery vehicle for Elite Doberman World</p>
+  </div>
+</div>
+
+<div class="card">
+  <img src="" alt="Van 2" style="width:100%; height:auto; border-radius:8px; display:none;">
+  <div class="card-content">
+    <h3>Van 2</h3>
+    <p>Delivery vehicle for Elite Doberman World</p>
+  </div>
+</div>
+
+</div>
 </section>
+
 </div>
 
 <!-- Floating Buttons -->
@@ -136,7 +238,7 @@ footer { background:#222; color:#ccc; text-align:center; padding:15px; font-size
 <a href="#" class="chat-btn" onclick="openChat()">Chat AI</a>
 </div>
 
-<!-- Chat -->
+<!-- Chat Popup -->
 <div class="chat-popup" id="chatForm">
 <div class="chat-header">Elite Doberman Assistant</div>
 <div class="chat-body">
@@ -151,78 +253,85 @@ footer { background:#222; color:#ccc; text-align:center; padding:15px; font-size
 </footer>
 
 <script>
-function toggleMenu(){const m=document.getElementById("menuContent"); m.style.display=m.style.display==='block'?'none':'block';}
-function openChat(){const c=document.getElementById("chatForm");c.style.display=c.style.display==='block'?'none':'block';}
-function sendChat(){const i=document.getElementById("userInput").value.trim();if(!i)return; addMessage(i,'user');document.getElementById("userInput").value="";setTimeout(()=>{addMessage(getBotReply(i.toLowerCase()),'bot');},500);}
-function addMessage(t,s){const m=document.getElementById("chatMessages");const d=document.createElement("div");d.className=s==='user'?'user-msg':'bot-msg';d.textContent=t;m.appendChild(d);m.scrollTop=m.scrollHeight;}
-function getBotReply(msg){if(msg.includes("hello")||msg.includes("hi"))return"Hello! 👋 Welcome to Elite Doberman World. How can I help you today?";if(msg.includes("price")||msg.includes("cost"))return"Our Dobermans range from $750 to $3000 depending on age and pedigree.";if(msg.includes("puppy")||msg.includes("available"))return"We have both puppies and adult Dobermans. You can see the current availability above.";if(msg.includes("contact")||msg.includes("whatsapp")||msg.includes("email"))return"You can contact us via WhatsApp or Email using the floating buttons.";return"Thank you for your message! Our team will contact you shortly.";}
-
-let deliveries=[];
-let map,directionsService,directionsRenderer,marker;
-
-function initMap(){
-  map=new google.maps.Map(document.getElementById("map"),{zoom:7,center:{lat:4.052,lng:9.706}});
-  directionsService=new google.maps.DirectionsService();
-  directionsRenderer=new google.maps.DirectionsRenderer({map:map});
+// 3-dot Menu
+function toggleMenu() {
+  const menu = document.getElementById("menuContent");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
 }
 
-function createTracking(){
-  const n=document.getElementById("delName").value.trim(),
-        e=document.getElementById("delEmail").value.trim(),
-        d=document.getElementById("delDog").value.trim(),
-        a=document.getElementById("delAddress").value.trim();
-  if(!n||!e||!d||!a){alert("Please fill all fields."); return;}
-  const code='EDW-'+Math.random().toString(36).substring(2,10).toUpperCase();
-  deliveries.push({code,name:n,email:e,dog:d,address:a,status:"Processing"});
-  document.getElementById("trackingCodeDisplay").innerHTML=`Thank you, ${n}! Your delivery request has been received.<br>Tracking Code: <strong>${code}</strong>`;
+// AI Chat Bot
+function openChat() {
+  const chat = document.getElementById("chatForm");
+  chat.style.display = chat.style.display === "block" ? "none" : "block";
+}
+
+function sendChat() {
+  const input = document.getElementById("userInput").value.trim();
+  if(!input) return;
+  addMessage(input,'user');
+  document.getElementById("userInput").value = "";
+  setTimeout(() => {
+    const botReply = getBotReply(input.toLowerCase());
+    addMessage(botReply,'bot');
+  },500);
+}
+
+function addMessage(text, sender){
+  const chatMessages = document.getElementById("chatMessages");
+  const div = document.createElement("div");
+  div.className = sender === 'user' ? 'user-msg' : 'bot-msg';
+  div.textContent = text;
+  chatMessages.appendChild(div);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function getBotReply(msg){
+  if(msg.includes("hello") || msg.includes("hi")) return "Hello! 👋 Welcome to Elite Doberman World. How can I help you today?";
+  if(msg.includes("price") || msg.includes("cost")) return "Our Dobermans range from $750 to $3000 depending on age and pedigree.";
+  if(msg.includes("puppy") || msg.includes("available")) return "We have both puppies and adult Dobermans. You can see the current availability above.";
+  if(msg.includes("contact") || msg.includes("whatsapp") || msg.includes("email")) return "You can contact us via WhatsApp or Email using the floating buttons.";
+  return "Thank you for your message! Our team will contact you shortly.";
+}
+
+// Delivery & Tracking System
+let deliveries = [];
+
+function createTracking() {
+  const name = document.getElementById("delName").value.trim();
+  const email = document.getElementById("delEmail").value.trim();
+  const dog = document.getElementById("delDog").value.trim();
+  const address = document.getElementById("delAddress").value.trim();
+  if(!name || !email || !dog || !address){ alert("Please fill all fields."); return; }
+  const code = 'EDW-'+Math.random().toString(36).substring(2,10).toUpperCase();
+  const delivery = { code, name, email, dog, address, status: "Processing" };
+  deliveries.push(delivery);
+  document.getElementById("trackingCodeDisplay").innerHTML = `Thank you, ${name}! Your delivery request has been received.<br>Tracking Code: <strong>${code}</strong>`;
   document.getElementById("deliveryForm").reset();
-  trackPackage(code);
 }
 
-function trackPackage(codeInput){
-  const code=codeInput||document.getElementById("trackInput").value.trim().toUpperCase();
-  const delivery=deliveries.find(d=>d.code===code);
-  const dt=document.getElementById("distanceTime");
+function trackPackage() {
+  const code = document.getElementById("trackInput").value.trim().toUpperCase();
+  const delivery = deliveries.find(d => d.code === code);
   if(delivery){
-    document.getElementById("trackResult").innerHTML=`Tracking Code: ${code}<br>Status: ${delivery.status}<br>Dog: ${delivery.dog}<br>Address: ${delivery.address}`;
-    const origin={lat:4.052,lng:9.706};
-    const geocoder = new google.maps.Geocoder();
-    geocoder.geocode({address: delivery.address}, (results, status)=>{
-      if(status==='OK'){
-        const destination = results[0].geometry.location;
-        directionsService.route({origin,destination,travelMode:'DRIVING'}, (res, status)=>{
-          if(status==='OK'){
-            directionsRenderer.setDirections(res);
-            const leg = res.routes[0].legs[0];
-            dt.innerHTML=`Distance: ${leg.distance.text} | ETA: ${leg.duration.text}`;
-            // Place moving marker at origin
-            if(marker) marker.setMap(null);
-            marker=new google.maps.Marker({position:origin,map:map,icon:"https://maps.google.com/mapfiles/ms/icons/blue-dot.png"});
-            animateMarker(marker, leg);
-          }
-        });
-      }
-    });
-  } else {document.getElementById("trackResult").innerHTML="Tracking code not found."; dt.innerHTML='';}
+    document.getElementById("trackResult").innerHTML = `Tracking Code: ${code}<br>Status: ${delivery.status}<br>Dog: ${delivery.dog}<br>Address: ${delivery.address}`;
+  } else {
+    document.getElementById("trackResult").innerHTML = "Tracking code not found.";
+  }
 }
 
-// Animate marker along the route
-function animateMarker(marker, leg){
-  const path=[leg.start_location, leg.end_location];
-  let step=0;
-  const steps=100;
-  const delay=50;
-  function move(){
-    if(step>steps) return;
-    const lat = leg.start_location.lat() + (leg.end_location.lat()-leg.start_location.lat())*(step/steps);
-    const lng = leg.start_location.lng() + (leg.end_location.lng()-leg.start_location.lng())*(step/steps);
-    marker.setPosition({lat,lng});
-    step++;
-    setTimeout(move, delay);
+function updateStatus() {
+  const code = document.getElementById("updateCode").value.trim().toUpperCase();
+  const status = document.getElementById("updateStatus").value.trim();
+  const delivery = deliveries.find(d => d.code === code);
+  if(delivery){
+    delivery.status = status;
+    document.getElementById("updateResult").innerHTML = `Delivery ${code} status updated to "${status}".`;
+    document.getElementById("updateCode").value = "";
+    document.getElementById("updateStatus").value = "";
+  } else {
+    document.getElementById("updateResult").innerHTML = "Tracking code not found.";
   }
-  move();
 }
 </script>
-<script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
 </body>
 </html>
