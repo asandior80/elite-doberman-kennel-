@@ -5,30 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Elite Doberman World | Premium Doberman Breeder</title>
 <style>
-/* Global Styles */
-body { font-family:'Arial',sans-serif; margin:0; background:linear-gradient(to bottom, #f0f0f0, #ffe6e6); color:#222; }
-header { background:#4b2e83; color:#fff; text-align:center; padding:40px 20px; }
+body { font-family:'Arial',sans-serif; margin:0; background:#f4f4f4; color:#222; }
+header { background:#6a1b9a; color:#fff; text-align:center; padding:40px 20px; }
 header h1 { font-size:2.5rem; margin:0; }
 header p { font-size:1rem; margin-top:10px; }
-nav { background:#6a3fb5; text-align:center; padding:12px; position:sticky; top:0; z-index:100; }
-nav a { color:#fff; margin:0 12px; font-weight:bold; transition:0.3s; text-decoration:none; }
-nav a:hover { color:#ffd633; }
+nav { background:#8e24aa; text-align:center; padding:12px; position:sticky; top:0; z-index:100; }
+nav a { color:#fff; margin:0 12px; font-weight:bold; text-decoration:none; }
+nav a:hover { color:#ffb74d; }
 .container { max-width:1200px; margin:auto; padding:20px; }
-h2 { border-bottom:3px solid #ffd633; display:inline-block; padding-bottom:5px; margin-bottom:20px; }
-
-/* Gallery Styles */
-.gallery { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:15px; }
+h2 { border-bottom:3px solid #ffb74d; display:inline-block; padding-bottom:5px; margin-bottom:20px; }
+.gallery { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:15px; }
 .card { background:#fff; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.15); overflow:hidden; transition:0.3s; padding:10px; }
 .card:hover { transform:scale(1.02); }
+.card img { width:100%; height:auto; border-radius:8px; }
 .card-content h3 { margin:0; font-size:1rem; }
-.card-content p { margin:5px 0; font-size:0.85rem; line-height:1.3rem; }
-
-/* Labels & Price */
+.card-content p { margin:5px 0; font-size:0.85rem; }
 .label { display:inline-block; background:#ff4d4d; color:#fff; padding:2px 6px; border-radius:4px; font-size:0.75rem; margin-bottom:5px; }
 .price { font-weight:bold; color:#333; font-size:0.9rem; }
-
-/* Footer */
-footer { background:#4b2e83; color:#ccc; text-align:center; padding:15px; font-size:0.8rem; }
+footer { background:#6a1b9a; color:#ccc; text-align:center; padding:15px; font-size:0.8rem; }
 
 /* Floating Buttons */
 .floating-btn { position:fixed; bottom:20px; right:20px; display:flex; flex-direction:column; gap:6px; z-index:1000; }
@@ -39,9 +33,9 @@ footer { background:#4b2e83; color:#ccc; text-align:center; padding:15px; font-s
 /* 3-dot Menu */
 .menu-wrapper { position:fixed; top:15px; right:15px; z-index:1001; }
 .menu-btn { font-size:25px; cursor:pointer; background:none; border:none; color:#333; }
-.menu-content { display:none; position:absolute; top:35px; right:0; background:#fff; border:1px solid #ccc; border-radius:6px; box-shadow:0 4px 10px rgba(0,0,0,0.2); width:220px; overflow:hidden; }
+.menu-content { display:none; position:absolute; top:35px; right:0; background:#fff; border:1px solid #ccc; border-radius:6px; box-shadow:0 4px 10px rgba(0,0,0,0.2); width:200px; overflow:hidden; }
 .menu-content a { display:block; padding:8px 12px; font-size:13px; color:#222; border-bottom:1px solid #eee; }
-.menu-content a:hover { background:#ffd633; color:#222; }
+.menu-content a:hover { background:#8e24aa; color:#fff; }
 .menu-content a:last-child { border-bottom:none; }
 
 /* Chat Popup */
@@ -61,8 +55,8 @@ footer { background:#4b2e83; color:#ccc; text-align:center; padding:15px; font-s
 #delivery button { background:#25D366; color:white; border:none; cursor:pointer; }
 #delivery button:hover { background:#1ebe57; }
 
-/* Map Container */
-#map { width:100%; height:400px; margin:15px 0; border-radius:10px; }
+/* Google Map */
+#map { width:100%; height:300px; border-radius:8px; margin-top:10px; }
 </style>
 </head>
 <body>
@@ -76,20 +70,22 @@ footer { background:#4b2e83; color:#ccc; text-align:center; padding:15px; font-s
 <div class="menu-wrapper">
   <button class="menu-btn" onclick="toggleMenu()">⋮</button>
   <div class="menu-content" id="menuContent">
-    <a href="#dobermans">Our Dobermans</a>
+    <a href="#dobermans">Dobermans</a>
     <a href="#vehicles">Delivery Vehicles</a>
-    <a href="#families">Happy Families</a>
+    <a href="#families">Families</a>
+    <a href="#contact">Contact</a>
     <a href="#delivery">Delivery & Tracking</a>
-    <a href="#contact">Contact Us</a>
+    <a href="#about">About Us</a>
   </div>
 </div>
 
 <nav>
 <a href="#dobermans">Dobermans</a>
-<a href="#vehicles">Vehicles</a>
+<a href="#vehicles">Delivery Vehicles</a>
 <a href="#families">Families</a>
-<a href="#delivery">Tracking</a>
 <a href="#contact">Contact</a>
+<a href="#delivery">Delivery & Tracking</a>
+<a href="#about">About</a>
 </nav>
 
 <div class="container">
@@ -98,35 +94,18 @@ footer { background:#4b2e83; color:#ccc; text-align:center; padding:15px; font-s
 <section id="dobermans">
 <h2>Our Dobermans</h2>
 <div class="gallery">
-<script>
-const dobermans = [
-  {name:"Max", gender:"Male", color:"Black & Rust", age:"8 Weeks", price:1200, desc:"Max is a healthy and playful Doberman puppy. He loves running around and interacting with children. Max is strong, loyal, and shows excellent temperament for family companionship. He is vaccinated and ready to be part of your home. His sleek coat is shiny and well-groomed, making him the perfect addition for both family and protection."},
-  {name:"Luna", gender:"Female", color:"Red & Rust", age:"9 Weeks", price:1300, desc:"Luna is a gentle and intelligent Doberman female. She is very affectionate and quickly adapts to new surroundings. She enjoys being with children and is playful yet obedient. Luna comes from excellent pedigree and has great potential for training. Her bright eyes and attentive behavior make her a charming companion."},
-  {name:"Rex", gender:"Male", color:"Black & Rust", age:"10 Weeks", price:1400, desc:"Rex is a bold and energetic Doberman with a friendly disposition. He loves outdoor activities and will thrive in active families. Rex is well-socialized, vaccinated, and has a smooth, shiny coat. His alertness and intelligence make him ideal for both companionship and home security."},
-  {name:"Bella", gender:"Female", color:"Black & Rust", age:"12 Weeks", price:1500, desc:"Bella is a loving and calm Doberman, perfect for families. She is gentle with children and easy to train. Bella is healthy, strong, and comes with full veterinary care. Her attentive nature and affectionate behavior make her the ideal indoor and outdoor companion."},
-  {name:"Thor", gender:"Male", color:"Red & Rust", age:"6 Months", price:1600, desc:"Thor is a strong, loyal, and active Doberman. He enjoys playtime and exercises regularly. Thor has excellent health and a friendly temperament. He is perfect for families who want both companionship and a watchful protector. His shiny coat and sharp features make him stand out in any setting."},
-  {name:"Shadow", gender:"Male", color:"Black & Rust", age:"8 Months", price:1750, desc:"Shadow is an energetic Doberman with a calm personality. He is highly intelligent, loves learning new tricks, and bonds easily with his owners. Shadow is vaccinated and ready to join a loving family. He is a perfect mix of playfulness and obedience, making him ideal for any household."},
-  {name:"Nova", gender:"Female", color:"Red & Rust", age:"1 Year", price:1800, desc:"Nova is a playful and affectionate Doberman female. She enjoys attention and interacts well with children. Nova is healthy, fully vaccinated, and comes from a strong lineage. Her loyalty and loving nature make her an excellent addition to a family home."},
-  {name:"Zeus", gender:"Male", color:"Black & Rust", age:"1.5 Years", price:2000, desc:"Zeus is a mature, calm, and intelligent Doberman. He has been socialized with families and other pets. Zeus is protective yet gentle, making him perfect for home security and companionship. His strong physique and shiny coat make him highly attractive."},
-  {name:"Stella", gender:"Female", color:"Red & Rust", age:"2 Years", price:2200, desc:"Stella is a confident and loving Doberman female. She is playful, smart, and well-trained. Stella has been vaccinated and enjoys being around children. Her calm demeanor and alertness make her suitable for families and protective roles."},
-  {name:"King", gender:"Male", color:"Black & Rust", age:"2.5 Years", price:2500, desc:"King is a majestic Doberman male with a strong protective instinct. He is calm, loyal, and intelligent. King has excellent health records and enjoys being part of family activities. His sleek coat and muscular build make him an impressive companion."},
-  // Add more up to 30 if needed
-];
-dobermans.forEach(d=>{
-  document.write(`
-    <div class="card">
-      <img src="https://placedog.net/400/300?id=${Math.floor(Math.random()*100)}" alt="${d.name}" style="width:100%; height:auto; border-radius:8px;">
-      <div class="card-content">
-        <span class="label">Available</span>
-        <h3>${d.name}</h3>
-        <p>Gender: ${d.gender} | Color: ${d.color} | Age: ${d.age}</p>
-        <p class="price">$${d.price}</p>
-        <p>${d.desc}</p>
-      </div>
-    </div>
-  `);
-});
-</script>
+  <!-- 10 constant Dobermans with descriptions -->
+  <!-- Using placedog.net placeholders; replace with real images later -->
+  <div class="card"><img src="https://placedog.net/400/300?id=1" alt="Max"><div class="card-content"><span class="label">Available</span><h3>Max</h3><p>Male | Black & Rust | 8 Weeks</p><p class="price">$1200</p><p>Max is a healthy, playful Doberman. Loves children and shows excellent temperament. Vaccinated and ready for family life.</p></div></div>
+  <div class="card"><img src="https://placedog.net/400/300?id=2" alt="Luna"><div class="card-content"><span class="label">Available</span><h3>Luna</h3><p>Female | Red & Rust | 9 Weeks</p><p class="price">$1300</p><p>Luna is gentle and intelligent. Affectionate with kids, easy to train, excellent pedigree. Bright eyes and charming companion.</p></div></div>
+  <div class="card"><img src="https://placedog.net/400/300?id=3" alt="Rex"><div class="card-content"><span class="label">Available</span><h3>Rex</h3><p>Male | Black & Rust | 10 Weeks</p><p class="price">$1400</p><p>Rex is bold, energetic, and friendly. Well-socialized, vaccinated, smooth shiny coat, alert and intelligent.</p></div></div>
+  <div class="card"><img src="https://placedog.net/400/300?id=4" alt="Bella"><div class="card-content"><span class="label">Available</span><h3>Bella</h3><p>Female | Black & Rust | 12 Weeks</p><p class="price">$1500</p><p>Bella is loving and calm. Gentle with kids, easy to train, vaccinated, strong and attentive.</p></div></div>
+  <div class="card"><img src="https://placedog.net/400/300?id=5" alt="Thor"><div class="card-content"><span class="label">Available</span><h3>Thor</h3><p>Male | Red & Rust | 6 Months</p><p class="price">$1600</p><p>Thor is strong, loyal, and active. Loves playtime, healthy, friendly, shiny coat, perfect companion and protector.</p></div></div>
+  <div class="card"><img src="https://placedog.net/400/300?id=6" alt="Shadow"><div class="card-content"><span class="label">Available</span><h3>Shadow</h3><p>Male | Black & Rust | 8 Months</p><p class="price">$1750</p><p>Shadow is energetic and calm. Highly intelligent, loves learning, vaccinated, obedient, perfect for families.</p></div></div>
+  <div class="card"><img src="https://placedog.net/400/300?id=7" alt="Nova"><div class="card-content"><span class="label">Available</span><h3>Nova</h3><p>Female | Red & Rust | 1 Year</p><p class="price">$1800</p><p>Nova is playful, affectionate, and interacts well with children. Healthy, fully vaccinated, loving and loyal.</p></div></div>
+  <div class="card"><img src="https://placedog.net/400/300?id=8" alt="Zeus"><div class="card-content"><span class="label">Available</span><h3>Zeus</h3><p>Male | Black & Rust | 1.5 Years</p><p class="price">$2000</p><p>Zeus is calm, intelligent, socialized, protective yet gentle. Strong physique and shiny coat make him attractive.</p></div></div>
+  <div class="card"><img src="https://placedog.net/400/300?id=9" alt="Stella"><div class="card-content"><span class="label">Available</span><h3>Stella</h3><p>Female | Red & Rust | 2 Years</p><p class="price">$2200</p><p>Stella is confident, loving, playful, smart, well-trained. Vaccinated, protective and calm, ideal for families.</p></div></div>
+  <div class="card"><img src="https://placedog.net/400/300?id=10" alt="King"><div class="card-content"><span class="label">Available</span><h3>King</h3><p>Male | Black & Rust | 2.5 Years</p><p class="price">$2500</p><p>King is majestic, protective, calm, loyal, intelligent. Excellent health, sleek coat, muscular build, impressive companion.</p></div></div>
 </div>
 </section>
 
@@ -134,131 +113,29 @@ dobermans.forEach(d=>{
 <section id="vehicles">
 <h2>Delivery Vehicles</h2>
 <div class="gallery">
-<script>
-const vehicles = ["Truck","Van","Plane","Truck","Van","Plane","Truck","Van","Plane","Truck"];
-vehicles.forEach((v,i)=>{
-  document.write(`
-    <div class="card">
-      <img src="https://loremflickr.com/320/240/${v}?random=${i}" alt="${v}">
-      <div class="card-content">
-        <h3>${v}</h3>
-        <p>Used for safe Doberman deliveries.</p>
-      </div>
-    </div>
-  `);
-});
-</script>
+  <div class="card"><img src="https://loremflickr.com/320/240/truck?lock=1" alt="Truck"><div class="card-content"><h3>Delivery Truck</h3><p>Safe and reliable transport.</p></div></div>
+  <div class="card"><img src="https://loremflickr.com/320/240/van?lock=2" alt="Van"><div class="card-content"><h3>Delivery Van</h3><p>Ensures safe travel for pets.</p></div></div>
+  <div class="card"><img src="https://loremflickr.com/320/240/plane?lock=3" alt="Plane"><div class="card-content"><h3>Delivery Plane</h3><p>Fast air delivery for long distances.</p></div></div>
+  <div class="card"><img src="https://loremflickr.com/320/240/truck?lock=4" alt="Truck"><div class="card-content"><h3>Delivery Truck</h3><p>Reliable ground transportation.</p></div></div>
+  <div class="card"><img src="https://loremflickr.com/320/240/van?lock=5" alt="Van"><div class="card-content"><h3>Delivery Van</h3><p>Safe and secure vehicle.</p></div></div>
+  <div class="card"><img src="https://loremflickr.com/320/240/plane?lock=6" alt="Plane"><div class="card-content"><h3>Delivery Plane</h3><p>Quick and efficient transport.</p></div></div>
+  <div class="card"><img src="https://loremflickr.com/320/240/truck?lock=7" alt="Truck"><div class="card-content"><h3>Delivery Truck</h3><p>Ensures timely delivery of pets.</p></div></div>
+  <div class="card"><img src="https://loremflickr.com/320/240/van?lock=8" alt="Van"><div class="card-content"><h3>Delivery Van</h3><p>Comfortable and safe journey.</p></div></div>
+  <div class="card"><img src="https://loremflickr.com/320/240/plane?lock=9" alt="Plane"><div class="card-content"><h3>Delivery Plane</h3><p>Long-distance delivery in style.</p></div></div>
+  <div class="card"><img src="https://loremflickr.com/320/240/truck?lock=10" alt="Truck"><div class="card-content"><h3>Delivery Truck</h3><p>Reliable and secure transport.</p></div></div>
 </div>
 </section>
 
-<!-- Families -->
+<!-- Families with Dobermans -->
 <section id="families">
 <h2>Happy Families with Their Dobermans</h2>
 <div class="gallery">
-<script>
-const families = [
-  {desc:"We named him Max! Our kids adore him, and he’s part of our family already!"},
-  {desc:"Luna is so playful and loving. Thank you for delivering her safely to our home!"},
-  {desc:"Our new Doberman, Rex, fits perfectly into our daily routine. Amazing service!"},
-  {desc:"Bella is affectionate and loyal. She’s already guarding our home!"},
-  {desc:"Thor is a handsome dog and the kids love his energy. Excellent delivery experience."},
-  {desc:"Shadow has become our jogging partner. Safe, happy, and perfect Doberman!"},
-  {desc:"Nova is gentle with our youngest child. Thank you for a smooth delivery!"},
-  {desc:"Zeus is energetic and loyal. The family loves him, and he loves us back!"},
-  {desc:"Stella is our protective angel. She was delivered safely and quickly."},
-  {desc:"King is playful and full of love. Our home feels complete now!"}
-];
-families.forEach((f,i)=>{
-  document.write(`
-    <div class="card">
-      <img src="https://placedog.net/400/300?id=${100+i}" alt="Family with Doberman ${i+1}">
-      <div class="card-content">
-        <p>"${f.desc}"</p>
-      </div>
-    </div>
-  `);
-});
-</script>
-</div>
-</section>
-
-<!-- Delivery & Tracking -->
-<section id="delivery">
-<h2>Delivery & Tracking</h2>
-<form id="deliveryForm">
-<label>Name:</label>
-<input type="text" id="delName" placeholder="Your Name" required>
-<label>Email:</label>
-<input type="email" id="delEmail" placeholder="Your Email" required>
-<label>Doberman / Dog:</label>
-<input type="text" id="delDog" placeholder="Dog Name/ID" required>
-<label>Delivery Address:</label>
-<textarea id="delAddress" placeholder="Full Address" required></textarea>
-<button type="button" onclick="createTracking()">Request Delivery</button>
-</form>
-
-<p id="trackingCodeDisplay"></p>
-
-<h3>Track Your Package</h3>
-<input type="text" id="trackInput" placeholder="Enter Tracking Code">
-<button type="button" onclick="trackPackage()">Track</button>
-<p id="trackResult"></p>
-
-<h3>Delivery Location</h3>
-<div id="map"></div>
-</section>
-
-<!-- Contact -->
-<section id="contact">
-<h2>Contact Us</h2>
-<p>Email: nickpatrick887@gmail.com</p>
-<p>WhatsApp Only: (365) 907-3536</p>
-</section>
-
-</div>
-
-<!-- Floating Buttons -->
-<div class="floating-btn">
-<a href="https://wa.me/13659073536" target="_blank">WhatsApp</a>
-<a href="mailto:nickpatrick887@gmail.com" class="email-btn">Email</a>
-<a href="#" class="chat-btn" onclick="openChat()">Chat AI</a>
-</div>
-
-<!-- Chat Popup -->
-<div class="chat-popup" id="chatForm">
-<div class="chat-header">Elite Doberman Assistant</div>
-<div class="chat-body">
-<div class="chat-messages" id="chatMessages"></div>
-<input type="text" id="userInput" placeholder="Type a message...">
-<button onclick="sendChat()">Send</button>
-</div>
-</div>
-
-<footer>
-<p>© 2026 Elite Doberman World. All rights reserved.</p>
-</footer>
-
-<script>
-// Menu
-function toggleMenu(){ const menu=document.getElementById("menuContent"); menu.style.display = menu.style.display==="block" ? "none" : "block"; }
-
-// Chat AI
-function openChat(){ const chat=document.getElementById("chatForm"); chat.style.display = chat.style.display==="block" ? "none":"block"; }
-function sendChat(){
-  const input=document.getElementById("userInput").value.trim();
-  if(!input) return;
-  addMessage(input,'user'); document.getElementById("userInput").value="";
-  setTimeout(()=>{ const botReply=getBotReply(input.toLowerCase()); addMessage(botReply,'bot'); },500);
-}
-function addMessage(text,sender){ const chatMessages=document.getElementById("chatMessages"); const div=document.createElement("div"); div.className=sender==='user'?'user-msg':'bot-msg'; div.textContent=text; chatMessages.appendChild(div); chatMessages.scrollTop=chatMessages.scrollHeight; }
-function getBotReply(msg){
-  if(msg.includes("hello")||msg.includes("hi")) return "Hello! 👋 Welcome to Elite Doberman World. How can I help you today?";
-  if(msg.includes("price")||msg.includes("cost")) return "Our Dobermans range from $750 to $3000 depending on age and pedigree.";
-  if(msg.includes("puppy")||msg.includes("available")) return "We have both puppies and adult Dobermans. You can see the current availability above.";
-  if(msg.includes("contact")||msg.includes("whatsapp")||msg.includes("email")) return "You can contact us via WhatsApp or Email using the floating buttons.";
-  return "Thank you for your message! Our team will contact you shortly.";
-}
-
-// Tracking System
-let deliveries=[];
-function create
+  <div class="card"><img src="https://loremflickr.com/320/240/family-dog?lock=11" alt="Family 1"><div class="card-content"><p>"Max fits perfectly into our home. Kids adore him!"</p></div></div>
+  <div class="card"><img src="https://loremflickr.com/320/240/family-dog?lock=12" alt="Family 2"><div class="card-content"><p>"Luna is playful and loving. Thank you for delivering her safely!"</p></div></div>
+  <div class="card"><img src="https://loremflickr.com/320/240/family-dog?lock=13" alt="Family 3"><div class="card-content"><p>"Rex is perfect for our family. Amazing service!"</p></div></div>
+  <div class="card"><img src="https://loremflickr.com/320/240/family-dog?lock=14" alt="Family 4"><div class="card-content"><p>"Bella is affectionate and loyal. Already guarding our home!"</p></div></div>
+  <div class="card"><img src="https://loremflickr.com/320/240/family-dog?lock=15" alt="Family 5"><div class="card-content"><p>"Thor is handsome and energetic. Kids love him!"</p></div></div>
+  <div class="card"><img src="https://loremflickr.com/320/240/family-dog?lock=16" alt="Family 6"><div class="card-content"><p>"Shadow is our jogging partner. Safe, happy, perfect Doberman!"</p></div></div>
+  <div class="card"><img src="https://loremflickr.com/320/240/family-dog?lock=17" alt="Family 7"><div class="card-content"><p>"Nova is gentle with our youngest child. Smooth delivery!"</p></div></div>
+  <div class="card"><img src="https://loremflickr.com/320/240/family-dog?lock=18" alt="Family 8"><div class="card-content"><p>"Zeus is energetic and loyal. Family loves him!"</p></div></div>
+  <div class="card"><img src="https://loremflickr.com/320/240/family-dog?lock=19" alt="Family 9"><div class="card-content"><p>"Stella is our protective angel. Delivered safely!"</p></div></div>
