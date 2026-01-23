@@ -1,181 +1,106 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elite Doberman World | Premium Doberman Breeder</title>
-<meta name="description" content="Elite Doberman World is a premium Doberman breeder offering top-quality puppies and adult Dobermans worldwide.">
-<style>
-body { font-family:'Arial',sans-serif; margin:0; background:#f4f4f4; color:#222; }
-a { text-decoration:none; color:inherit; }
-header { background:#222 url('https://via.placeholder.com/1200x400?text=Elite+Doberman+World') center/cover no-repeat; color:#fff; text-align:center; padding:50px 20px; position:relative; }
-header::after { content:""; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); }
-header h1 { position:relative; font-size:3rem; margin:0; }
-header p { position:relative; font-size:1.3rem; margin-top:10px; }
-nav { background:#333; text-align:center; padding:12px; position:sticky; top:0; z-index:100; }
-nav a { color:#fff; margin:0 12px; font-weight:bold; transition:0.3s; }
-nav a:hover { color:#ff9933; }
-.container { max-width:1200px; margin:auto; padding:30px 20px; }
-h2 { border-bottom:3px solid #ff9933; display:inline-block; padding-bottom:5px; margin-bottom:20px; }
-.gallery { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:20px; }
-.card { background:#fff; border-radius:12px; box-shadow:0 6px 15px rgba(0,0,0,0.15); overflow:hidden; transition:0.3s; }
-.card:hover { transform:scale(1.03); }
-.card img { width:100%; height:200px; object-fit:cover; }
-.card-content { padding:15px; }
-.card-content h3 { margin:0; font-size:1.2rem; }
-.card-content p { margin:8px 0; font-size:0.95rem; }
-.label { display:inline-block; background:#ff4d4d; color:#fff; padding:3px 8px; border-radius:5px; font-size:0.85rem; margin-bottom:5px; }
-.price { font-weight:bold; color:#333; font-size:1rem; }
-footer { background:#222; color:#ccc; text-align:center; padding:20px; font-size:0.9rem; }
+<section id="delivery">
+  <h2>Delivery & Tracking</h2>
 
-/* WhatsApp Floating Button */
-.whatsapp-btn {
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#25D366;
-  color:#fff;
-  border-radius:50px;
-  padding:15px 20px;
-  font-size:16px;
-  font-weight:bold;
-  box-shadow:0 4px 10px rgba(0,0,0,0.2);
-  z-index:1000;
-  display:flex;
-  align-items:center;
-  transition:0.3s;
-}
-.whatsapp-btn:hover { background:#1ebe57; }
-.whatsapp-btn img { width:24px; height:24px; margin-right:10px; }
-</style>
-</head>
-<body>
+  <!-- Delivery Request Form -->
+  <form id="deliveryForm">
+    <label>Name:</label><br>
+    <input type="text" id="delName" placeholder="Your Name" required><br><br>
 
-<header>
-<h1>Elite Doberman World</h1>
-<p>Premium Doberman Breeder Since 2018</p>
-</header>
+    <label>Email:</label><br>
+    <input type="email" id="delEmail" placeholder="Your Email" required><br><br>
 
-<nav>
-<a href="#puppies">Puppies & Dogs</a>
-<a href="#contact">Contact</a>
-</nav>
+    <label>Doberman / Dog:</label><br>
+    <input type="text" id="delDog" placeholder="Dog Name/ID" required><br><br>
 
-<div class="container">
+    <label>Delivery Address:</label><br>
+    <textarea id="delAddress" placeholder="Full Address" required></textarea><br><br>
 
-<section id="puppies">
-<h2>Our Dobermans</h2>
-<div class="gallery">
+    <button type="button" onclick="createTracking()">Request Delivery</button>
+  </form>
+
+  <p id="trackingCodeDisplay"></p>
+
+  <hr>
+
+  <!-- Track Package -->
+  <h3>Track Your Package</h3>
+  <input type="text" id="trackInput" placeholder="Enter Tracking Code">
+  <button type="button" onclick="trackPackage()">Track</button>
+  <p id="trackResult"></p>
+
+  <hr>
+
+  <!-- Admin Update Delivery Status -->
+  <h3>Update Delivery Status (Admin)</h3>
+  <input type="text" id="updateCode" placeholder="Tracking Code">
+  <input type="text" id="updateStatus" placeholder="New Status">
+  <button type="button" onclick="updateStatus()">Update</button>
+  <p id="updateResult"></p>
+
+  <hr>
+
+  <!-- Vehicle Gallery -->
+  <div class="gallery" style="margin-top:20px;">
+    <script>
+      const vehicles = ["Truck","Van","Plane","Truck","Van","Plane","Truck","Van","Plane","Truck"];
+      vehicles.forEach((v,i)=>{
+        document.write(`
+          <div class="card">
+            <img src="https://via.placeholder.com/400x200?text=${v}+Elite+Doberman+World" alt="${v}">
+            <div class="card-content">
+              <h3>${v}</h3>
+              <p>Delivery vehicle for Elite Doberman World</p>
+            </div>
+          </div>
+        `);
+      });
+    </script>
+  </div>
+</section>
 
 <script>
-const names = ["Max","Luna","Rex","Bella","Thor","Shadow","Nova","Zeus","Stella","King","Ace","Mia","Apollo","Cleo","Diesel"];
-const genders = ["Male","Female"];
-const colors = ["Black & Rust","Red & Rust"];
-const ages = ["8 Weeks","9 Weeks","10 Weeks","12 Weeks","6 Months","8 Months","1 Year","1.5 Years","2 Years","2.5 Years","3 Years","3.5 Years","4 Years"];
-const prices = [750,900,1200,1500,1600,1750,1800,2000,2200,2500,2800,3000];
+// Store deliveries in browser
+let deliveries = [];
 
-for(let i=0;i<15;i++){
-  const name = names[i];
-  const gender = genders[Math.floor(Math.random()*2)];
-  const color = colors[Math.floor(Math.random()*2)];
-  const age = ages[Math.floor(Math.random()*ages.length)];
-  const price = prices[Math.floor(Math.random()*prices.length)];
-  const available = Math.random()<0.7 ? "Available":"Sold";
-  
-  document.write(`
-    <div class="card">
-      <img src="https://via.placeholder.com/400x200?text=${name}" alt="Doberman ${name}">
-      <div class="card-content">
-        <span class="label">${available}</span>
-        <h3>${name}</h3>
-        <p>Gender: ${gender} | Color: ${color} | Age: ${age}</p>
-        <p class="price">$${price}</p>
-      </div>
-    </div>
-  `);
+// Create Tracking
+function createTracking() {
+  const name = document.getElementById("delName").value.trim();
+  const email = document.getElementById("delEmail").value.trim();
+  const dog = document.getElementById("delDog").value.trim();
+  const address = document.getElementById("delAddress").value.trim();
+  if(!name || !email || !dog || !address){ alert("Please fill all fields."); return; }
+
+  const code = 'EDW-'+Math.random().toString(36).substring(2,10).toUpperCase();
+  const delivery = { code, name, email, dog, address, status: "Processing" };
+  deliveries.push(delivery);
+
+  document.getElementById("trackingCodeDisplay").innerHTML = `Thank you, ${name}! Your delivery request has been received.<br>Tracking Code: <strong>${code}</strong>`;
+  document.getElementById("deliveryForm").reset();
+}
+
+// Track Package
+function trackPackage() {
+  const code = document.getElementById("trackInput").value.trim().toUpperCase();
+  const delivery = deliveries.find(d => d.code === code);
+  if(delivery){
+    document.getElementById("trackResult").innerHTML = `Tracking Code: ${code}<br>Status: ${delivery.status}<br>Dog: ${delivery.dog}<br>Address: ${delivery.address}`;
+  } else {
+    document.getElementById("trackResult").innerHTML = "Tracking code not found.";
+  }
+}
+
+// Admin Update Delivery Status
+function updateStatus() {
+  const code = document.getElementById("updateCode").value.trim().toUpperCase();
+  const status = document.getElementById("updateStatus").value.trim();
+  const delivery = deliveries.find(d => d.code === code);
+  if(delivery){
+    delivery.status = status;
+    document.getElementById("updateResult").innerHTML = `Delivery ${code} status updated to "${status}".`;
+    document.getElementById("updateCode").value = "";
+    document.getElementById("updateStatus").value = "";
+  } else {
+    document.getElementById("updateResult").innerHTML = "Tracking code not found.";
+  }
 }
 </script>
-
-</div>
-</section>
-
-<section id="contact">
-<h2>Contact Us</h2>
-<p>Email: nickpatrick887@gmail.com</p>
-<p>WhatsApp Only: (365) 907-3536</p>
-</section>
-
-</div>
-
-<!-- WhatsApp Floating Button -->
-<a href="https://wa.me/13659073536" target="_blank" class="whatsapp-btn">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo">
-  Message Now
-</a>
-
-<footer>
-<p>© 2026 Elite Doberman World. All rights reserved.</p>
-</footer>
-
-</body>
-</html></header>
-
-<nav>
-<a href="#puppies">Puppies & Dogs</a>
-<a href="#contact">Contact</a>
-</nav>
-
-<div class="container">
-
-<section id="puppies">
-<h2>Our Dobermans</h2>
-<div class="gallery">
-
-<!-- 40 Doberman Cards with lightweight placeholders -->
-
-<script>
-const names = ["Max","Luna","Rex","Bella","Thor","Shadow","Nova","Zeus","Stella","King","Ace","Mia","Apollo","Cleo","Diesel","Duke","Ruby","Titan","Nala","Bruno","Sasha","Leo","Athena","Rocky","Chloe","Hunter","Lola","Ranger","Daisy","Blaze","Jax","Sadie","Gunner","Zara","Samson","Maya","Rocco","Olivia","Storm","Ruby"];
-const genders = ["Male","Female"];
-const colors = ["Black & Rust","Red & Rust"];
-const ages = ["8 Weeks","9 Weeks","10 Weeks","12 Weeks","6 Months","8 Months","1 Year","1.5 Years","2 Years","2.5 Years","3 Years","3.5 Years","4 Years"];
-const prices = [750,900,1200,1500,1600,1750,1800,2000,2200,2500,2800,3000];
-
-for(let i=0;i<40;i++){
-  const name = names[i];
-  const gender = genders[Math.floor(Math.random()*2)];
-  const color = colors[Math.floor(Math.random()*2)];
-  const age = ages[Math.floor(Math.random()*ages.length)];
-  const price = prices[Math.floor(Math.random()*prices.length)];
-  const available = Math.random()<0.7 ? "Available":"Sold";
-  
-  document.write(`
-    <div class="card">
-      <img src="https://via.placeholder.com/400x200?text=${name}" alt="Doberman ${name}">
-      <div class="card-content">
-        <span class="label">${available}</span>
-        <h3>${name}</h3>
-        <p>Gender: ${gender} | Color: ${color} | Age: ${age}</p>
-        <p class="price">$${price}</p>
-      </div>
-    </div>
-  `);
-}
-</script>
-
-</div>
-</section>
-
-<section id="contact">
-<h2>Contact Us</h2>
-<p>Email: nickpatrick887@gmail.com</p>
-<p>WhatsApp Only: (365) 907-3536</p>
-</section>
-
-</div>
-
-<footer>
-<p>© 2026 Elite Doberman World. All rights reserved.</p>
-</footer>
-
-</body>
-</html>
