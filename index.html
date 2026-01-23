@@ -1,84 +1,270 @@
-<section id="delivery">
-  <h2>Delivery & Tracking</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite Doberman World | Premium Doberman Breeder</title>
+<style>
+body { font-family:'Arial',sans-serif; margin:0; background:#f4f4f4; color:#222; }
+header { background:#222 url('https://via.placeholder.com/800x200?text=Elite+Doberman+World') center/cover no-repeat; color:#fff; text-align:center; padding:50px 20px; position:relative; }
+header::after { content:""; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); }
+header h1 { position:relative; font-size:2.5rem; margin:0; }
+header p { position:relative; font-size:1rem; margin-top:10px; }
+nav { background:#333; text-align:center; padding:12px; position:sticky; top:0; z-index:100; }
+nav a { color:#fff; margin:0 12px; font-weight:bold; transition:0.3s; }
+nav a:hover { color:#ff9933; }
+.container { max-width:1200px; margin:auto; padding:20px; }
+h2 { border-bottom:3px solid #ff9933; display:inline-block; padding-bottom:5px; margin-bottom:20px; }
+.gallery { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:15px; }
+.card { background:#fff; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.15); overflow:hidden; transition:0.3s; }
+.card:hover { transform:scale(1.02); }
+.card img { width:100%; height:150px; object-fit:cover; }
+.card-content { padding:10px; }
+.card-content h3 { margin:0; font-size:1rem; }
+.card-content p { margin:5px 0; font-size:0.85rem; }
+.label { display:inline-block; background:#ff4d4d; color:#fff; padding:2px 6px; border-radius:4px; font-size:0.75rem; margin-bottom:5px; }
+.price { font-weight:bold; color:#333; font-size:0.9rem; }
+footer { background:#222; color:#ccc; text-align:center; padding:15px; font-size:0.8rem; }
 
-  <!-- Delivery Request Form -->
-  <form id="deliveryForm">
-    <label>Name:</label><br>
-    <input type="text" id="delName" placeholder="Your Name" required><br><br>
+/* Floating Buttons */
+.floating-btn { position:fixed; bottom:20px; right:20px; display:flex; flex-direction:column; gap:8px; z-index:1000; }
+.floating-btn a { display:flex; align-items:center; background:#25D366; color:#fff; border-radius:50px; padding:8px 12px; font-weight:bold; box-shadow:0 3px 7px rgba(0,0,0,0.2); text-decoration:none; transition:0.3s; font-size:0.9rem; }
+.floating-btn a:hover { opacity:0.85; }
+.floating-btn a.email-btn { background:#0072c6; }
+.floating-btn img { width:20px; height:20px; margin-right:8px; }
 
-    <label>Email:</label><br>
-    <input type="email" id="delEmail" placeholder="Your Email" required><br><br>
+/* 3-dot Menu */
+.menu-wrapper { position:fixed; top:15px; right:15px; z-index:1001; }
+.menu-btn { font-size:25px; cursor:pointer; background:none; border:none; color:#333; }
+.menu-content { display:none; position:absolute; top:35px; right:0; background:#fff; border:1px solid #ccc; border-radius:6px; box-shadow:0 4px 10px rgba(0,0,0,0.2); width:200px; overflow:hidden; }
+.menu-content a { display:block; padding:8px 12px; font-size:13px; color:#222; border-bottom:1px solid #eee; }
+.menu-content a:hover { background:#ff9933; color:#fff; }
+.menu-content a:last-child { border-bottom:none; }
 
-    <label>Doberman / Dog:</label><br>
-    <input type="text" id="delDog" placeholder="Dog Name/ID" required><br><br>
+/* Chat Popup */
+.chat-popup { display:none; position:fixed; bottom:120px; right:20px; border:2px solid #25D366; border-radius:8px; z-index:1002; background:white; width:250px; max-width:90%; }
+.chat-header { background:#25D366; color:white; padding:8px; text-align:center; border-radius:6px 6px 0 0; font-weight:bold; font-size:0.9rem; }
+.chat-body { padding:8px; max-height:300px; overflow-y:auto; }
+.chat-messages { height:150px; overflow-y:auto; border:1px solid #ccc; padding:4px; border-radius:4px; margin-bottom:4px; background:#f9f9f9; font-size:0.8rem; }
+.chat-messages div { margin:3px 0; }
+.user-msg { text-align:right; color:#fff; background:#25D366; display:inline-block; padding:3px 6px; border-radius:10px; font-size:0.8rem; }
+.bot-msg { text-align:left; color:#000; background:#eee; display:inline-block; padding:3px 6px; border-radius:10px; font-size:0.8rem; }
+.chat-body input { width:100%; padding:5px; border-radius:4px; border:1px solid #ccc; margin-bottom:4px; font-size:0.8rem; }
+.chat-body button { background:#25D366; color:white; border:none; padding:6px 8px; border-radius:4px; cursor:pointer; width:100%; font-size:0.8rem; }
+.chat-body button:hover { background:#1ebe57; }
 
-    <label>Delivery Address:</label><br>
-    <textarea id="delAddress" placeholder="Full Address" required></textarea><br><br>
+/* Delivery Form */
+#delivery input, #delivery textarea, #delivery button { width:100%; padding:6px; margin-bottom:8px; border-radius:4px; border:1px solid #ccc; font-size:0.85rem; }
+#delivery button { background:#25D366; color:white; border:none; cursor:pointer; }
+#delivery button:hover { background:#1ebe57; }
+</style>
+</head>
+<body>
 
-    <button type="button" onclick="createTracking()">Request Delivery</button>
-  </form>
+<header>
+<h1>Elite Doberman World</h1>
+<p>Premium Doberman Breeder Since 2018</p>
+</header>
 
-  <p id="trackingCodeDisplay"></p>
-
-  <hr>
-
-  <!-- Track Package -->
-  <h3>Track Your Package</h3>
-  <input type="text" id="trackInput" placeholder="Enter Tracking Code">
-  <button type="button" onclick="trackPackage()">Track</button>
-  <p id="trackResult"></p>
-
-  <hr>
-
-  <!-- Admin Update Delivery Status -->
-  <h3>Update Delivery Status (Admin)</h3>
-  <input type="text" id="updateCode" placeholder="Tracking Code">
-  <input type="text" id="updateStatus" placeholder="New Status">
-  <button type="button" onclick="updateStatus()">Update</button>
-  <p id="updateResult"></p>
-
-  <hr>
-
-  <!-- Vehicle Gallery -->
-  <div class="gallery" style="margin-top:20px;">
-    <script>
-      const vehicles = ["Truck","Van","Plane","Truck","Van","Plane","Truck","Van","Plane","Truck"];
-      vehicles.forEach((v,i)=>{
-        document.write(`
-          <div class="card">
-            <img src="https://via.placeholder.com/400x200?text=${v}+Elite+Doberman+World" alt="${v}">
-            <div class="card-content">
-              <h3>${v}</h3>
-              <p>Delivery vehicle for Elite Doberman World</p>
-            </div>
-          </div>
-        `);
-      });
-    </script>
+<!-- 3-dot Menu -->
+<div class="menu-wrapper">
+  <button class="menu-btn" onclick="toggleMenu()">⋮</button>
+  <div class="menu-content" id="menuContent">
+    <a href="#">About / About Us</a>
+    <a href="#">Settings</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms & Conditions</a>
+    <a href="#">Help / Support</a>
+    <a href="#">Report a Problem / Feedback</a>
+    <a href="#">Share</a>
+    <a href="#">Save / Bookmark</a>
+    <a href="#" onclick="location.reload()">Refresh / Reload</a>
+    <a href="#">Desktop Site</a>
   </div>
+</div>
+
+<nav>
+<a href="#puppies">Puppies & Dogs</a>
+<a href="#contact">Contact</a>
+<a href="#delivery">Delivery & Tracking</a>
+</nav>
+
+<div class="container">
+
+<!-- Puppies Gallery -->
+<section id="puppies">
+<h2>Our Dobermans</h2>
+<div class="gallery">
+<script>
+const names = ["Max","Luna","Rex","Bella","Thor","Shadow","Nova","Zeus","Stella","King","Ace","Mia","Apollo","Cleo","Diesel"];
+const genders = ["Male","Female"];
+const colors = ["Black & Rust","Red & Rust"];
+const ages = ["8 Weeks","9 Weeks","10 Weeks","12 Weeks","6 Months","8 Months","1 Year","1.5 Years","2 Years","2.5 Years","3 Years","3.5 Years","4 Years"];
+const prices = [750,900,1200,1500,1600,1750,1800,2000,2200,2500,2800,3000];
+for(let i=0;i<15;i++){
+  const name = names[i];
+  const gender = genders[Math.floor(Math.random()*2)];
+  const color = colors[Math.floor(Math.random()*2)];
+  const age = ages[Math.floor(Math.random()*ages.length)];
+  const price = prices[Math.floor(Math.random()*prices.length)];
+  const available = Math.random()<0.7 ? "Available":"Sold";
+  document.write(`
+    <div class="card">
+      <img src="https://via.placeholder.com/400x200?text=${name}" alt="Doberman ${name}">
+      <div class="card-content">
+        <span class="label">${available}</span>
+        <h3>${name}</h3>
+        <p>Gender: ${gender} | Color: ${color} | Age: ${age}</p>
+        <p class="price">$${price}</p>
+      </div>
+    </div>
+  `);
+}
+</script>
+</div>
 </section>
 
+<!-- Contact Section -->
+<section id="contact">
+<h2>Contact Us</h2>
+<p>Email: nickpatrick887@gmail.com</p>
+<p>WhatsApp Only: (365) 907-3536</p>
+</section>
+
+<!-- Delivery Section -->
+<section id="delivery">
+<h2>Delivery & Tracking</h2>
+
+<form id="deliveryForm">
+<label>Name:</label>
+<input type="text" id="delName" placeholder="Your Name" required>
+<label>Email:</label>
+<input type="email" id="delEmail" placeholder="Your Email" required>
+<label>Doberman / Dog:</label>
+<input type="text" id="delDog" placeholder="Dog Name/ID" required>
+<label>Delivery Address:</label>
+<textarea id="delAddress" placeholder="Full Address" required></textarea>
+<button type="button" onclick="createTracking()">Request Delivery</button>
+</form>
+
+<p id="trackingCodeDisplay"></p>
+
+<h3>Track Your Package</h3>
+<input type="text" id="trackInput" placeholder="Enter Tracking Code">
+<button type="button" onclick="trackPackage()">Track</button>
+<p id="trackResult"></p>
+
+<h3>Admin Update Delivery Status</h3>
+<input type="text" id="updateCode" placeholder="Tracking Code">
+<input type="text" id="updateStatus" placeholder="New Status">
+<button type="button" onclick="updateStatus()">Update</button>
+<p id="updateResult"></p>
+
+<h3>Delivery Vehicles</h3>
+<div class="gallery" style="margin-top:20px;">
 <script>
-// Store deliveries in browser
+const vehicles = ["Truck","Van","Plane","Truck","Van","Plane","Truck","Van","Plane","Truck"];
+vehicles.forEach((v)=>{
+  document.write(`
+    <div class="card">
+      <img src="https://via.placeholder.com/400x200?text=${v}+Elite+Doberman+World" alt="${v}">
+      <div class="card-content">
+        <h3>${v}</h3>
+        <p>Delivery vehicle for Elite Doberman World</p>
+      </div>
+    </div>
+  `);
+});
+</script>
+</div>
+</section>
+
+</div>
+
+<!-- Floating Buttons -->
+<div class="floating-btn">
+<a href="https://wa.me/13659073536" target="_blank">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">WhatsApp
+</a>
+<a href="mailto:nickpatrick887@gmail.com" class="email-btn">
+<img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="Email">Email
+</a>
+<a href="#" class="chat-btn" onclick="openChat()">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Chat Logo">Chat AI
+</a>
+</div>
+
+<!-- Chat Popup -->
+<div class="chat-popup" id="chatForm">
+<div class="chat-header">Elite Doberman Assistant</div>
+<div class="chat-body">
+<div class="chat-messages" id="chatMessages"></div>
+<input type="text" id="userInput" placeholder="Type a message...">
+<button onclick="sendChat()">Send</button>
+</div>
+</div>
+
+<footer>
+<p>© 2026 Elite Doberman World. All rights reserved.</p>
+</footer>
+
+<script>
+// 3-dot Menu
+function toggleMenu() {
+  const menu = document.getElementById("menuContent");
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+}
+
+// AI Chat Bot
+function openChat() {
+  const chat = document.getElementById("chatForm");
+  chat.style.display = chat.style.display === "block" ? "none" : "block";
+}
+
+function sendChat() {
+  const input = document.getElementById("userInput").value.trim();
+  if(!input) return;
+  addMessage(input,'user');
+  document.getElementById("userInput").value = "";
+  setTimeout(() => {
+    const botReply = getBotReply(input.toLowerCase());
+    addMessage(botReply,'bot');
+  },500);
+}
+
+function addMessage(text, sender){
+  const chatMessages = document.getElementById("chatMessages");
+  const div = document.createElement("div");
+  div.className = sender === 'user' ? 'user-msg' : 'bot-msg';
+  div.textContent = text;
+  chatMessages.appendChild(div);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function getBotReply(msg){
+  if(msg.includes("hello") || msg.includes("hi")) return "Hello! 👋 Welcome to Elite Doberman World. How can I help you today?";
+  if(msg.includes("price") || msg.includes("cost")) return "Our Dobermans range from $750 to $3000 depending on age and pedigree.";
+  if(msg.includes("puppy") || msg.includes("available")) return "We have both puppies and adult Dobermans. You can see the current availability above.";
+  if(msg.includes("contact") || msg.includes("whatsapp") || msg.includes("email")) return "You can contact us via WhatsApp or Email using the floating buttons.";
+  return "Thank you for your message! Our team will contact you shortly.";
+}
+
+// Delivery & Tracking System
 let deliveries = [];
 
-// Create Tracking
 function createTracking() {
   const name = document.getElementById("delName").value.trim();
   const email = document.getElementById("delEmail").value.trim();
   const dog = document.getElementById("delDog").value.trim();
   const address = document.getElementById("delAddress").value.trim();
   if(!name || !email || !dog || !address){ alert("Please fill all fields."); return; }
-
   const code = 'EDW-'+Math.random().toString(36).substring(2,10).toUpperCase();
   const delivery = { code, name, email, dog, address, status: "Processing" };
   deliveries.push(delivery);
-
   document.getElementById("trackingCodeDisplay").innerHTML = `Thank you, ${name}! Your delivery request has been received.<br>Tracking Code: <strong>${code}</strong>`;
   document.getElementById("deliveryForm").reset();
 }
 
-// Track Package
 function trackPackage() {
   const code = document.getElementById("trackInput").value.trim().toUpperCase();
   const delivery = deliveries.find(d => d.code === code);
@@ -89,7 +275,6 @@ function trackPackage() {
   }
 }
 
-// Admin Update Delivery Status
 function updateStatus() {
   const code = document.getElementById("updateCode").value.trim().toUpperCase();
   const status = document.getElementById("updateStatus").value.trim();
@@ -104,3 +289,5 @@ function updateStatus() {
   }
 }
 </script>
+</body>
+</html>
